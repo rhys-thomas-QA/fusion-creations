@@ -261,28 +261,25 @@
 <script type="text/javascript" src="js/custom.js"></script>
 
 <script>
-    $(document).ready(function(){
-        console.log('Document is ready');
-        $('#contact-form').on('submit', function(e){
-            e.preventDefault();
-            console.log('Form submitted');
+    const handleSubmit = (event) => {
+        event.preventDefault();
 
-            $.ajax({
-                type: 'POST',
-                url: '/send',
-                data: $(this).serialize(),
-                success: function(response) {
-                    console.log('Success:', response);
-                    $('#form-message').html('<p class="success">Message sent successfully!</p>');
-                    $('#contact-form')[0].reset();
-                },
-                error: function(error) {
-                    console.log('Error:', error);
-                    $('#form-message').html('<p class="error">Something went wrong. Please try again later.</p>');
-                }
-            });
-        });
-    });
+        const myForm = event.target;
+        const formData = new FormData(myForm);
+
+        fetch("/", {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: new URLSearchParams(formData).toString(),
+        })
+            .then(() => alert("Thank you for your submission"))
+            .catch((error) => alert(error));
+    };
+
+    document
+        .querySelector("form")
+        .addEventListener("submit", handleSubmit);
+
 </script>
 
 
