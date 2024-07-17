@@ -483,6 +483,32 @@ p {
   margin: 15px 0 0;
 }
 
+.how-it-works-section {
+   padding: 60px 0;
+ }
+.how-it-works-section .step-box {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px 0;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+.how-it-works-section .step-box:hover {
+  transform: translateY(-10px);
+}
+.how-it-works-section .step-box img {
+  width: 230px;
+  height: 230px;
+  margin-bottom: 20px;
+}
+.how-it-works-section .step-box h4 {
+  margin-bottom: 10px;
+}
+.how-it-works-section .step-box p {
+  color: #777;
+}
+
 /* Top_content
 ---------------------------------*/
 
@@ -1016,7 +1042,7 @@ img {
   position: absolute;
   font-family: FontAwesome;
   font-size: 1.125em;
-  color: #F74D4D;
+  color: #a2c456;
   left: 0px;
   top: 3px;
 }

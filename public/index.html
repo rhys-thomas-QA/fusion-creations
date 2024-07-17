@@ -40,9 +40,9 @@
                 <div id="main-nav" class="collapse navbar-collapse navStyle">
                     <ul class="nav navbar-nav" id="mainNav">
                         <li class="active"><a href="#top" class="scroll-link">Home</a></li>
-                        <li><a href="#aboutUs" class="scroll-link">About Me</a></li>
-                        <li><a href="#howItWorks" class="scroll-link">How It Works</a></li>
                         <li><a href="#Portfolio" class="scroll-link">Portfolio</a></li>
+                        <li><a href="#howItWorks" class="scroll-link">How It Works</a></li>
+                        <li><a href="#aboutUs" class="scroll-link">About Me</a></li>
                         <li><a href="#contact" class="scroll-link">Contact</a></li>
                     </ul>
                 </div>
@@ -162,27 +162,56 @@
 <!--/Portfolio -->
 
 <!-- How It Works -->
-<section id="howItWorks">
+<section id="howItWorks" class="how-it-works-section">
     <div class="container">
         <h2>How It Works</h2>
-        <h6>Our Process in Detail</h6>
+        <h6>The Process in Detail</h6>
         <div class="inner_section">
             <div class="row">
-                <div class="col-md-12">
-                    <p>After the initial contact, here is the process we follow:</p>
-                    <ul class="how-it-works-list">
-                        <li><strong>1. Determine the number of holders required.</strong></li>
-                        <li><strong>2. Discuss and finalize the design</strong>, including any customizations like
-                            individual names and subtexts.
-                        </li>
-                        <li><strong>3. Select the colors and confirm the sizes.</strong></li>
-                        <li><strong>4. Set a deadline for delivery.</strong></li>
-                        <li><strong>5. Evaluate the feasibility and finalize the order.</strong></li>
-                        <li><strong>6. Minimum order: 10 holders.</strong></li>
-                        <li><strong>7. Minimum price per item: £6</strong> (subject to design and color requirements).
-                        </li>
-                        <li><strong>8. Payment is invoiced upon delivery of the final product.</strong></li>
-                    </ul>
+                <div class="col-md-4">
+                    <div class="step-box">
+                        <img src="img/quantity.png" alt="Step 1">
+                        <h4>Determine the Number of Holders</h4>
+                        <p>A minimum order of 10 holders is required.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="step-box">
+                        <img src="img/colourSelect.png" alt="Step 2">
+                        <h4>Select Colors and Confirm Sizes</h4>
+                        <p>I have a vast array of colours available and we can work together to find the right colour
+                            for you.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="step-box">
+                        <img src="img/finalise.jpg" alt="Step 3">
+                        <h4>Finalize the Design</h4>
+                        <p>To get final sign off on designs, colours, and numbers.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="step-box">
+                        <img src="img/deadline.jpg" alt="Step 4">
+                        <h4>Set a Deadline</h4>
+                        <p>This depends on the complexity of the design and quantity required</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="step-box">
+                        <img src="img/printer.png" alt="Step 5">
+                        <h4>Evaluate Feasibility and Finalize Order</h4>
+                        <p>The minimum price per item is £6, subject to design and colour requirements.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="step-box">
+                        <img src="img/payment.jpg" alt="Step 6" style="width: 280px">
+                        <h4>Payment</h4>
+                        <p>Payment is invoiced upon delivery of the final product.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -223,8 +252,8 @@
     <div class="container">
         <section class="page_section contact" id="contact">
             <div class="contact_section">
-                <h2>Contact Us</h2>
-                <h6>We'd love to hear from you!</h6>
+                <h2>Contact</h2>
+                <h6>I'd love to hear from you!</h6>
 
             </div>
             <div class="row">
@@ -242,7 +271,8 @@
                         <form id="contact-form" data-netlify="true">
                             <input class="input-text" type="text" name="name" placeholder="Your Name *" required>
                             <input class="input-text" type="email" name="email" placeholder="Your E-mail *" required>
-                            <textarea class="input-text text-area" name="message" placeholder="Your Message *" required></textarea>
+                            <textarea class="input-text text-area" name="message" placeholder="Your Message *"
+                                      required></textarea>
                             <input class="input-btn" type="submit" value="Send Message">
                         </form>
                         <div id="form-message"></div>
@@ -271,14 +301,14 @@
 
         fetch("/", {
             method: "POST",
-            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            headers: {"Content-Type": "application/x-www-form-urlencoded"},
             body: new URLSearchParams(formData).toString(),
         })
-            .then(() => function(response) {
+            .then(() => function (response) {
                 console.log('Success:', response);
                 $('#form-message').html('<p class="success">Message sent successfully!</p>');
                 $('#contact-form')[0].reset();
-            }, function(error) {
+            }, function (error) {
                 console.log('Error:', error);
                 $('#form-message').html('<p class="error">Something went wrong. Please try again later.</p>');
             })
