@@ -288,7 +288,7 @@ body {
     font-family: 'Open Sans', sans-serif;
     font-size: 14px;
     font-weight: normal;
-    color: #888888;
+    color: #030303;
     margin: 0;
 }
 
@@ -316,7 +316,7 @@ h6 {
     font-family: 'Open Sans', sans-serif;
     font-weight: 400;
     text-align: center;
-    margin: 0 0 60px 0;
+    margin: 0 0 10px 0;
 }
 
 p {
@@ -869,7 +869,23 @@ a.contact_btn:hover {
 
 
 #Portfolio {
-    padding: 60px 0px;
+    padding: 0px 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.portfolio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#portfolio_wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
 }
 
 .Portfolio-nav {
@@ -1569,20 +1585,15 @@ img {
     -webkit-animation-delay: 1.2s;
 }
 
-
-/*new_profolio*/
-
-
 /* Portfolio */
 
 .container.portfolio_title {
-    padding-bottom: 0px;
+    margin-bottom: 0px; /* Adjust this value as needed */
 }
 
 #portfolio {
     padding: 60px 0 40px;
 }
-
 
 /* Portfolio Filters */
 
@@ -1684,11 +1695,10 @@ img {
 /* Portfolio Items */
 
 #portfolio_wrapper {
-    position: relative;
-    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     width: 100%;
-    margin: 0 auto;
-    display: block;
 }
 
 #portfolio_wrapper .one-four {
@@ -1703,6 +1713,7 @@ img {
     padding: 0;
     position: relative;
     overflow: hidden;
+    align-content: center;
 }
 
 .portfolio-item .portfolio_img {
@@ -1832,6 +1843,35 @@ img {
     transition: opacity .3s .2s, margin-top .3s .2s;
 }
 
+.portfolio .isotope .portfolio-item {
+    display: none; /* Hide all items initially */
+}
+
+.portfolio .isotope .portfolio-item.clearscore {
+    display: block; /* Show only ClearScore items by default */
+}
+
+#filters a.active {
+    font-weight: bold;
+    color: #000;
+}
+
+/* Add the following CSS for filtering without JavaScript */
+.portfolio .isotope .portfolio-item.clearscore {
+    display: block;
+}
+
+#filters a[data-filter=".clearscore"] {
+    display: block;
+}
+
+#filters a[data-filter=".drivescore"] {
+    display: block;
+}
+
+#filters a[data-filter=".amex"] {
+    display: block;
+}
 
 /* Portfolio Isotope Transitions */
 
@@ -2147,291 +2187,6 @@ div.mc-image {
     padding: 0;
 }
 
-/*-------------------
------News Styles-----
----------------------*/
-.timeline {
-    position: relative;
-    margin-bottom: 100px;
-    z-index: 1;
-}
-
-.timeline:before {
-    display: block;
-    content: "";
-    position: absolute;
-    width: 50%;
-    height: 100%;
-    left: 1px;
-    top: 0;
-    border-right: 1px solid #F74D4D;
-    z-index: -1;
-}
-
-.timeline:after {
-    display: block;
-    content: "";
-    position: absolute;
-    width: 50%;
-    height: 100px;
-    left: 1px;
-    bottom: -105px;
-    border-right: 1px dashed #F74D4D;
-    z-index: -1;
-}
-
-.timeline .date-title {
-    text-align: center;
-    margin: 70px 0 50px;
-}
-
-.timeline .date-title span {
-    padding: 15px 30px;
-    font-size: 21px;
-    font-weight: 400;
-    color: #000;
-    background: #FEE16F;
-    border-radius: 5px;
-}
-
-.news-item {
-    padding-bottom: 45px;
-}
-
-.news-item.right {
-    float: right;
-    margin-top: 40px;
-}
-
-.news-item .news-content {
-    margin: 20px 30px 0 0;
-    position: relative;
-    padding: 30px;
-    padding-left: 100px;
-    background: #000000;
-    border-radius: 10px;
-    box-shadow: -5px 5px 0 rgba(0, 0, 0, 0.08);
-    -webkit-transition: all .3s ease-out;
-    transition: all .3s ease-out;
-}
-
-.news-item:hover .news-content {
-    background: #000000;
-    color: #fff;
-}
-
-.news-item.right .news-content {
-    margin: 20px 0 0 30px;
-    box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.08);
-}
-
-.news-item .news-content:after {
-    display: block;
-    content: "";
-    position: absolute;
-    top: 50px;
-    right: -40px;
-    width: 0px;
-    height: 0px;
-    background: transparent;
-    border: 20px solid transparent;
-    border-left: 20px solid #f5f5f5;
-    -webkit-transition: border-left-color .3s ease-out;
-    transition: border-left-color .3s ease-out;
-}
-
-.news-item.right .news-content:after {
-    position: absolute;
-    left: -40px;
-    right: auto;
-    border-left: 20px solid transparent;
-    border-right: 20px solid #f5f5f5;
-    -webkit-transition: border-right-color .3s ease-out;
-    transition: border-right-color .3s ease-out;
-}
-
-.news-item:hover .news-content:after {
-    border-left-color: #000000;
-}
-
-.news-item.right:hover .news-content:after {
-    border-left-color: transparent;
-    border-right-color: #000000;
-}
-
-.news-item .news-content:before {
-    display: block;
-    content: "";
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    right: -55px;
-    top: 60px;
-    background: #000000;
-    border: 3px solid #fff;
-    border-radius: 50%;
-    -webkit-transition: background .3s ease-out;
-    transition: background .3s ease-out;
-}
-
-.news-item.right .news-content:before {
-    left: -55px;
-    right: auto;
-}
-
-.news-content .date {
-    position: absolute;
-    width: 80px;
-    height: 80px;
-    left: 10px;
-    text-align: center;
-    color: #FEE16F;
-    -webkit-transition: color .3s ease-out;
-    transition: color .3s ease-out;
-}
-
-.news-item:hover .news-content .date {
-    color: #fff;
-}
-
-.news-content .date p {
-    margin: 0;
-    font-size: 38px;
-    font-weight: 400;
-    line-height: 48px;
-}
-
-.news-content .date small {
-    margin: 0;
-    font-size: 26px;
-    font-weight: 300;
-    line-height: 24px;
-}
-
-.news-content .news-title {
-    font-size: 24px;
-    font-weight: 300;
-    text-align: left;
-    margin-bottom: 4px;
-    color: #FFFFFF;
-}
-
-.news-content p {
-    font-size: 16px;
-    line-height: 24px;
-    font-weight: 300;
-    letter-spacing: 0.02em;
-    margin-bottom: 10px;
-}
-
-.news-content .read-more,
-.news-content .read-more:hover,
-.news-content .read-more:active,
-.news-content .read-more:focus {
-    padding: 10px 0;
-    text-decoration: none;
-    font-size: 16px;
-    color: #7A7C7F;
-    line-height: 24px;
-}
-
-.news-item:hover .news-content .read-more,
-.news-item:hover .news-content .read-more:hover,
-.news-item:hover .news-content .read-more:active,
-.news-item:hover .news-content .read-more:focus {
-    color: #fff;
-}
-
-.news-content .read-more {
-    -webkit-transition: padding .3s ease-out;
-    transition: padding .3s ease-out;
-}
-
-.news-content .read-more:hover {
-    padding-left: 7px;
-}
-
-.news-content .read-more:after {
-    content: '\f054';
-    padding-left: 15px;
-    font-family: 'FontAwesome';
-    font-size: 21px;
-    line-height: 21px;
-    color: #FEE16F;
-    vertical-align: middle;
-    -webkit-transition: padding .3s ease-out;
-    transition: padding .3s ease-out;
-}
-
-.news-content .read-more:hover:after {
-    padding-left: 20px;
-}
-
-.news-item:hover .news-content .read-more:after {
-    color: #fff;
-}
-
-.news-content .news-media {
-    position: absolute;
-    width: 80px;
-    bottom: -45px;
-    right: 40px;
-    border-radius: 8px;
-}
-
-.news-content .news-media img {
-    border-radius: 8px;
-    transform: scale(1);
-    -webkit-transition: -webkit-transform .3s ease-out;
-    transition: transform .3s ease-out;
-}
-
-.news-content .news-media a {
-    display: block;
-    text-decoration: none;
-    background: #fff;
-    border-radius: 8px;
-    overflow: hidden;
-    -webkit-mask-image: -webkit-radial-gradient(circle, white, black);
-}
-
-.news-content .news-media a:hover img {
-    -webkit-transform: scale(1.3);
-    transform: scale(1.3);
-}
-
-.news-content .news-media a:after {
-    content: '\f065';
-    position: absolute;
-    width: 100%;
-    top: 0;
-    left: 0;
-    font-family: FontAwesome;
-    font-size: 32px;
-    line-height: 80px;
-    text-align: center;
-    color: #F74D4D;
-    -webkit-transform: scale(0);
-    transform: scale(0);
-    opacity: 0;
-    -webkit-transition: all .2s ease-out .1s;
-    transition: all .2s ease-out .1s;
-}
-
-.news-content .news-media.video a:after {
-    content: '\f04b';
-}
-
-.news-content .news-media a:hover:after {
-    -webkit-transform: scale(1);
-    transform: scale(1);
-    opacity: 1;
-}
-
-.news-content .news-media.gallery {
-    box-shadow: 4px 4px 0 #bbb, 8px 8px 0 #ddd;
-}
-
 /*
    Media Queries
 --------------------------- */
@@ -2491,6 +2246,10 @@ div.mc-image {
     #aboutUs h3 {
         font-size: 26px;
         line-height: 22px;
+    }
+
+    #aboutUs p {
+
     }
 
     .service_block h3 {

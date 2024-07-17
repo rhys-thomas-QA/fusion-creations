@@ -76,10 +76,7 @@
 
         <div id="filters" class="sixteen columns">
             <ul class="clearfix">
-                <li><a id="all" href="#" data-filter="*" class="active">
-                    <h5>All</h5>
-                </a></li>
-                <li><a class="" href="#" data-filter=".clearscore">
+                <li><a href="#" data-filter=".clearscore" class="active">
                     <h5>ClearScore</h5>
                 </a></li>
                 <li><a class="" href="#" data-filter=".drivescore">
@@ -98,15 +95,13 @@
             <!-- Portfolio Item -->
             <figure style="position: absolute; left: 0px; top: 0px;"
                     class="portfolio-item one-four clearscore isotope-item effect-oscar">
-
                 <div class="portfolio_img">
-                    <img src="img/portfolio_pic1.jpg" alt="Portfolio 1"></div>
+                    <img src="img/profile.jpg" alt="Portfolio 1">
+                </div>
                 <figcaption>
                     <div>
                         <a href="img/portfolio_pic1.jpg" class="fancybox">
                             <h2>Company X <span>ID Holders</span></h2>
-                            Bespoke ID cardholders for ClearScore with personalized names and subtexts.
-                            <p></p>
                         </a>
                     </div>
                 </figcaption>
@@ -116,13 +111,10 @@
             <!-- Portfolio Item-->
             <figure style="position: absolute; left: 0px; top: 0px;"
                     class="portfolio-item one-four drivescore isotope-item effect-oscar">
-                <div class="portfolio_img"><img src="img/portfolio_pic2.jpg" alt="Portfolio 1"></div>
+                <div class="portfolio_img"><img src="img/deadline.jpg" alt="Portfolio 1"></div>
                 <figcaption>
                     <div>
-                        <a href="img/portfolio_pic2.jpg" class="fancybox">
-                            <h2>DriveScore <span>ID Holders</span></h2>
-                            <p>Customized ID cardholders for DriveScore with unique design and colors.</p>
-                        </a>
+                        <h2>DriveScore <span>ID Holders</span></h2>
                     </div>
                 </figcaption>
             </figure>
@@ -131,12 +123,11 @@
             <!-- Portfolio Item -->
             <figure style="position: absolute; left: 0px; top: 0px;"
                     class="portfolio-item one-four amex isotope-item effect-oscar">
-                <div class="portfolio_img"><img src="img/portfolio_pic3.jpg" alt="Portfolio 1"></div>
+                <div class="portfolio_img"><img src="img/finalise.jpg" alt="Portfolio 1"></div>
                 <figcaption>
                     <div>
-                        <a href="img/portfolio_pic3.jpg" class="fancybox">
+                        <a href="img/finalise.jpg" class="fancybox">
                             <h2>American Express <span>ID Holders</span></h2>
-                            <p>Custom design with multiple colors for American Express.</p>
                         </a>
                     </div>
                 </figcaption>
@@ -150,14 +141,10 @@
     <!--/Portfolio Filters -->
 
     <div class="portfolio_btm"></div>
-
-
     <div id="project_container">
         <div class="clear"></div>
         <div id="project_data"></div>
     </div>
-
-
 </section>
 <!--/Portfolio -->
 
@@ -250,7 +237,7 @@
 <!--Footer-->
 <footer class="footer_wrapper" id="contact">
     <div class="container">
-        <section class="page_section contact" id="contact">
+        <section class="page_section contact">
             <div class="contact_section">
                 <h2>Contact</h2>
                 <h6>If you are interested in getting your own ID cardholders made, I'd love to hear from you!</h6>
@@ -260,7 +247,7 @@
                 <div class="col-lg-4 wow fadeInLeft">
                     <div class="contact_info">
                         <div class="detail">
-                            <h4>Email me</h4>
+                            <h4 style="color: #777">Email me</h4>
                             <p>contact.fusioncreations@gmail.com</p>
                         </div>
                     </div>
@@ -293,27 +280,30 @@
 <script type="text/javascript" src="js/custom.js"></script>
 
 <script>
-    const handleSubmit = (event) => {
-        event.preventDefault();
+    document.addEventListener("DOMContentLoaded", function () {
+        const filters = document.querySelectorAll("#filters a");
+        const portfolioItems = document.querySelectorAll(".portfolio-item");
 
-        const myForm = event.target;
-        const formData = new FormData(myForm);
+        filters.forEach(filter => {
+            filter.addEventListener("click", function (e) {
+                e.preventDefault();
+                filters.forEach(f => f.classList.remove("active"));
+                this.classList.add("active");
 
-        fetch("/", {
-            method: "POST",
-            headers: {"Content-Type": "application/x-www-form-urlencoded"},
-            body: new URLSearchParams(formData).toString(),
-        })
-            .then(() => function (response) {
-                console.log('Success:', response);
-                $('#form-message').html('<p class="success">Message sent successfully!</p>');
-                $('#contact-form')[0].reset();
-            }, function (error) {
-                console.log('Error:', error);
-                $('#form-message').html('<p class="error">Something went wrong. Please try again later.</p>');
-            })
-            .catch((error) => alert(error));
-    };
+                const filterValue = this.getAttribute("data-filter");
+                portfolioItems.forEach(item => {
+                    if (item.classList.contains(filterValue.substring(1))) {
+                        item.style.display = "block";
+                    } else {
+                        item.style.display = "none";
+                    }
+                });
+            });
+        });
+
+        // Show ClearScore items by default
+        document.querySelector('[data-filter=".clearscore"]').click();
+    });
 </script>
 
 
