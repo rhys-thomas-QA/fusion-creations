@@ -152,7 +152,7 @@ figure.effect-oscar figcaption::before {
     top: 30px;
     right: 30px;
     bottom: 30px;
-    left: 30px;
+    left: 130px;
     border: 1px solid #fff;
     content: '';
 }
@@ -161,7 +161,7 @@ figure.effect-oscar h2 {
     margin: 20% 0 10px 0;
     -webkit-transition: -webkit-transform 0.35s;
     transition: transform 0.35s;
-    -webkit-transform: translate3d(0, 100%, 0);
+    -webkit-transform: translate3d(70px, 100%, 0);
     transform: translate3d(0, 100%, 0);
     color: #BEA726;
 }
@@ -531,7 +531,7 @@ div#main-nav {
 .portfolio {
     display: flex;
     flex-direction: column;
-    align-items: normal;
+    align-items: center;
 }
 
 #portfolio_wrapper {
