@@ -128,6 +128,69 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Designer section */
+.colour-picker {
+  -webkit-appearance: none;
+  appearance: none;
+  padding: 2px;
+}
+
+.colour-picker::-webkit-color-swatch-wrapper {
+  padding: 2px;
+}
+
+.colour-picker::-webkit-color-swatch {
+  border: none;
+  border-radius: 6px;
+}
+
+.colour-picker::-moz-color-swatch {
+  border: none;
+  border-radius: 6px;
+}
+
+.logo-dropzone {
+  min-height: 100px;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.logo-dropzone.drag-over {
+  border-color: #3b82f6;
+  background-color: rgba(59, 130, 246, 0.05);
+}
+
+.logo-dropzone.has-logo {
+  border-color: #3b82f6;
+  border-style: solid;
+}
+
+.canvas-container {
+  background: repeating-conic-gradient(#1a1a24 0% 25%, #111118 0% 50%) 50% / 20px 20px;
+}
+
+.canvas-container canvas {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+#three-container {
+  width: 400px;
+  height: 560px;
+  max-width: 100%;
+  cursor: grab;
+}
+
+#three-container:active {
+  cursor: grabbing;
+}
+
+#three-container canvas {
+  display: block;
+  max-width: 100%;
+  height: auto !important;
+}
+
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .fade-in-up {

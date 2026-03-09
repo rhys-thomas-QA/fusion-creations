@@ -53,6 +53,7 @@
       <ul class="hidden md:flex items-center gap-8 text-sm font-semibold">
         <li><a href="#home" class="nav-link text-text-muted hover:text-accent transition-colors active">Home</a></li>
         <li><a href="#portfolio" class="nav-link text-text-muted hover:text-accent transition-colors">Portfolio</a></li>
+        <li><a href="#designer" class="nav-link text-text-muted hover:text-accent transition-colors">Design Yours</a></li>
         <li><a href="#contact" class="nav-link text-text-muted hover:text-accent transition-colors">Contact</a></li>
       </ul>
       <!-- Mobile hamburger -->
@@ -65,6 +66,7 @@
       <ul class="flex flex-col items-center gap-4 py-6 text-sm font-semibold">
         <li><a href="#home" class="mobile-nav-link text-text-muted hover:text-accent transition-colors">Home</a></li>
         <li><a href="#portfolio" class="mobile-nav-link text-text-muted hover:text-accent transition-colors">Portfolio</a></li>
+        <li><a href="#designer" class="mobile-nav-link text-text-muted hover:text-accent transition-colors">Design Yours</a></li>
         <li><a href="#contact" class="mobile-nav-link text-text-muted hover:text-accent transition-colors">Contact</a></li>
       </ul>
     </div>
@@ -149,6 +151,101 @@
     <!-- Divider -->
     <div class="section-divider"></div>
 
+    <!-- Designer -->
+    <section id="designer" class="bg-page py-24 sm:py-32">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-16 fade-in-up">
+          <p class="text-accent font-semibold tracking-[0.2em] uppercase text-sm mb-4">Try It Out</p>
+          <h2 class="text-3xl sm:text-4xl font-bold mb-4 tracking-tight">Design Yours</h2>
+          <p class="text-text-muted text-lg max-w-2xl mx-auto">Customise the colour, logo, and text to see what your holder could look like.</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+          <!-- Controls -->
+          <div class="space-y-6 fade-in-up order-2 lg:order-1" style="transition-delay: 0ms;">
+            <!-- Colour picker -->
+            <div>
+              <label for="holder-colour" class="block text-sm font-semibold mb-2">Holder Colour</label>
+              <div class="flex items-center gap-3">
+                <input type="color" id="holder-colour" value="#bdb8ae"
+                  class="colour-picker w-12 h-12 rounded-lg border border-border cursor-pointer bg-transparent">
+                <span id="colour-hex" class="text-text-muted text-sm font-mono">#BDB8AE</span>
+              </div>
+            </div>
+
+            <!-- Detail colour picker (text + logo) -->
+            <div>
+              <label for="detail-colour" class="block text-sm font-semibold mb-2">Text &amp; Logo Colour</label>
+              <div class="flex items-center gap-3">
+                <input type="color" id="detail-colour" value="#2a2a2a"
+                  class="colour-picker w-12 h-12 rounded-lg border border-border cursor-pointer bg-transparent">
+                <span id="detail-colour-hex" class="text-text-muted text-sm font-mono">#2A2A2A</span>
+              </div>
+            </div>
+
+            <!-- Logo upload -->
+            <div>
+              <label class="block text-sm font-semibold mb-2">Company Logo</label>
+              <div id="logo-dropzone" class="logo-dropzone flex flex-col items-center justify-center gap-2 p-6 rounded-lg border-2 border-dashed border-border bg-card hover:border-accent/50 transition-colors cursor-pointer">
+                <i class="fa-solid fa-cloud-arrow-up text-2xl text-text-subtle"></i>
+                <span id="logo-info" class="text-text-muted text-sm">Click or drag to upload</span>
+                <button id="logo-remove" type="button" class="hidden text-xs text-red-400 hover:text-red-300 mt-1" aria-label="Remove logo">
+                  <i class="fa-solid fa-xmark"></i> Remove
+                </button>
+                <input type="file" id="logo-upload" accept="image/*" class="hidden">
+              </div>
+            </div>
+
+            <!-- Remove white background toggle -->
+            <div>
+              <label class="flex items-center gap-3 cursor-pointer">
+                <input type="checkbox" id="remove-white-bg" checked
+                  class="accent-accent w-4 h-4 rounded">
+                <span class="text-sm text-text-muted">Remove white background from logo</span>
+              </label>
+            </div>
+
+            <!-- Text line 1 -->
+            <div>
+              <label for="primary-text" class="block text-sm font-semibold mb-2">Text Line 1</label>
+              <input type="text" id="primary-text" placeholder="JANE" maxlength="20" value="JANE"
+                class="glow-input w-full bg-card border border-border rounded-lg px-4 py-3 text-text-primary placeholder-text-subtle focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-shadow">
+            </div>
+
+            <!-- Text line 2 -->
+            <div>
+              <label for="secondary-text" class="block text-sm font-semibold mb-2">Text Line 2</label>
+              <input type="text" id="secondary-text" placeholder="DOE" maxlength="20" value="DOE"
+                class="glow-input w-full bg-card border border-border rounded-lg px-4 py-3 text-text-primary placeholder-text-subtle focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-shadow">
+            </div>
+
+            <!-- Action buttons -->
+            <div class="flex flex-col sm:flex-row gap-3 pt-2">
+              <button id="download-preview"
+                class="glow-btn bg-accent hover:bg-accent-hover text-white font-semibold px-6 py-3 rounded-lg text-sm">
+                <i class="fa-solid fa-download mr-2"></i>Download Preview
+              </button>
+              <a href="#contact" id="get-quote"
+                class="glow-btn-outline inline-block border-2 border-accent text-accent hover:bg-accent hover:text-white font-semibold px-6 py-3 rounded-lg text-sm text-center">
+                <i class="fa-solid fa-envelope mr-2"></i>Get a Quote
+              </a>
+            </div>
+          </div>
+
+          <!-- 3D Preview -->
+          <div class="flex justify-center fade-in-up order-1 lg:order-2" style="transition-delay: 150ms;">
+            <div class="canvas-container bg-card rounded-xl border border-border p-4 inline-block">
+              <div id="three-container" aria-label="Interactive 3D ID card holder preview"></div>
+              <p class="text-text-subtle text-xs text-center mt-2">Click and drag to rotate</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Divider -->
+    <div class="section-divider"></div>
+
     <!-- Contact -->
     <section id="contact" class="bg-page py-24 sm:py-32">
       <div class="max-w-6xl mx-auto px-4 sm:px-6">
@@ -223,6 +320,9 @@
     <img id="lightbox-img" src="" alt="" class="max-w-[90vw] max-h-[85vh] rounded-lg shadow-2xl">
   </div>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  <script src="js/designer.js" defer></script>
   <script>
     (() => {
       // --- Year ---
