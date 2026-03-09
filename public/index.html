@@ -1,309 +1,400 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, maximum-scale=1">
-    <title>Custom 3D Printed ID Card Holders | Showcase</title>
-    <link rel="icon" href="img/favicon.png" type="image/png">
-    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="js/fancybox/jquery.fancybox.css" type="text/css" media="screen"/>
-    <link href="css/style.css" rel="stylesheet" type="text/css">
-    <link href="css/font-awesome.css" rel="stylesheet" type="text/css">
-    <link href="css/animate.css" rel="stylesheet" type="text/css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-    <!--[if lt IE 9]>
-    <script src="js/respond-1.1.0.min.js"></script>
-    <script src="js/html5shiv.js"></script>
-    <script src="js/html5element.js"></script>
-
-    <![endif]-->
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fusion Creations | Custom 3D Printed ID Card Holders</title>
+  <meta name="description" content="Custom 3D printed ID card holders for businesses. High-quality, bespoke designs by Fusion Creations.">
+  <meta property="og:title" content="Fusion Creations | Custom 3D Printed ID Card Holders">
+  <meta property="og:description" content="Custom 3D printed ID card holders for businesses. High-quality, bespoke designs.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="img/favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            page: '#0a0a0f',
+            surface: '#111118',
+            card: '#1a1a24',
+            border: '#242430',
+            accent: '#3b82f6',
+            'accent-hover': '#60a5fa',
+            'text-primary': '#f1f5f9',
+            'text-muted': '#94a3b8',
+            'text-subtle': '#64748b',
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+  <link rel="stylesheet" href="css/styles.css">
 </head>
-<body>
-<div id="top"></div>
-<!--Header_section-->
-<header id="header_wrapper">
-    <div class="container">
-        <div class="header_box">
-            <!--<div class="logo"><a href="#">Resume</a></div>-->
-            <nav class="navbar navbar-inverse" role="navigation">
-                <div class="navbar-header">
-                    <button type="button" id="nav-toggle" class="navbar-toggle" data-toggle="collapse"
-                            data-target="#main-nav"><span class="sr-only">Toggle navigation</span> <span
-                            class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
-                    </button>
-                </div>
-                <div id="main-nav" class="collapse navbar-collapse navStyle">
-                    <ul class="nav navbar-nav" id="mainNav">
-                        <li class="active"><a href="#top" class="scroll-link">Home</a></li>
-                        <li><a href="#Portfolio" class="scroll-link">Portfolio</a></li>
-                        <li><a href="#howItWorks" class="scroll-link">How It Works</a></li>
-                        <li><a href="#aboutUs" class="scroll-link">About Me</a></li>
-                        <li><a href="#contact" class="scroll-link">Contact</a></li>
-                    </ul>
-                </div>
-            </nav>
-        </div>
+<body class="bg-page text-text-primary font-sans">
+
+  <!-- Scroll progress bar -->
+  <div id="scroll-progress"></div>
+
+  <!-- Navigation -->
+  <header id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-surface/80 backdrop-blur-lg">
+    <nav class="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
+      <a href="#home" class="text-xl font-bold tracking-tight">
+        <span class="text-accent">Fusion</span> Creations
+      </a>
+      <!-- Desktop nav -->
+      <ul class="hidden md:flex items-center gap-8 text-sm font-semibold">
+        <li><a href="#home" class="nav-link text-text-muted hover:text-accent transition-colors active">Home</a></li>
+        <li><a href="#portfolio" class="nav-link text-text-muted hover:text-accent transition-colors">Portfolio</a></li>
+        <li><a href="#contact" class="nav-link text-text-muted hover:text-accent transition-colors">Contact</a></li>
+      </ul>
+      <!-- Mobile hamburger -->
+      <button id="menu-toggle" class="md:hidden text-text-primary focus:outline-none" aria-label="Toggle navigation menu" aria-expanded="false">
+        <i class="fa-solid fa-bars text-xl"></i>
+      </button>
+    </nav>
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-surface/95 backdrop-blur-lg border-t border-border">
+      <ul class="flex flex-col items-center gap-4 py-6 text-sm font-semibold">
+        <li><a href="#home" class="mobile-nav-link text-text-muted hover:text-accent transition-colors">Home</a></li>
+        <li><a href="#portfolio" class="mobile-nav-link text-text-muted hover:text-accent transition-colors">Portfolio</a></li>
+        <li><a href="#contact" class="mobile-nav-link text-text-muted hover:text-accent transition-colors">Contact</a></li>
+      </ul>
     </div>
-</header>
-<!--Header_section-->
-<div id="static-image" class="static-image">
-    <img src="img/hero-image.jpg" alt="Showcase Image" class="img-responsive">
-</div>
+  </header>
 
-<!-- Portfolio -->
-<section id="Portfolio" class="content">
-
-    <!-- Container -->
-    <div class="container portfolio_title">
-
-        <!-- Title -->
-        <div class="section-title">
-            <h2>Portfolio</h2>
-            <h6>Explore Recent Projects</h6>
-
+  <main>
+    <!-- Hero -->
+    <section id="home" class="relative min-h-screen flex items-center overflow-hidden">
+      <!-- Background image with parallax -->
+      <div id="hero-bg" class="parallax-bg absolute inset-0">
+        <img src="img/hero-image.jpg" alt="Custom 3D printed ID card holders showcase" class="w-full h-full object-cover">
+        <!-- Gradient overlay: stronger on left for text readability -->
+        <div class="absolute inset-0 bg-gradient-to-r from-page via-page/80 to-page/40 md:from-page md:via-page/70 md:to-transparent"></div>
+      </div>
+      <!-- Content -->
+      <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 py-32 text-center md:text-left">
+        <p class="text-accent font-semibold tracking-[0.2em] uppercase text-sm mb-6 fade-in-up" style="transition-delay: 0ms;">Custom 3D Printed</p>
+        <h1 class="text-5xl sm:text-6xl lg:text-7xl font-extrabold leading-[1.1] tracking-tight mb-8 gradient-heading fade-in-up" style="transition-delay: 120ms;">
+          ID Card Holders
+        </h1>
+        <p class="text-text-muted text-lg sm:text-xl max-w-xl mb-12 mx-auto md:mx-0 leading-relaxed fade-in-up" style="transition-delay: 240ms;">
+          Bespoke, high-quality 3D printed ID card holders designed and crafted for your business.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start fade-in-up" style="transition-delay: 360ms;">
+          <a href="#portfolio" class="glow-btn inline-block bg-accent hover:bg-accent-hover text-white font-semibold px-8 py-3 rounded-lg text-center">
+            View Portfolio
+          </a>
+          <a href="#contact" class="glow-btn-outline inline-block border-2 border-accent text-accent hover:bg-accent hover:text-white font-semibold px-8 py-3 rounded-lg text-center">
+            Get in Touch
+          </a>
         </div>
-        <!--/Title -->
+      </div>
+    </section>
 
-    </div>
-    <!-- Container -->
+    <!-- Divider -->
+    <div class="section-divider"></div>
 
-    <div class="portfolio-top"></div>
-
-    <!-- Portfolio Filters -->
-    <div class="portfolio">
-        <div id="filters" class="sixteen columns">
-            <ul class="clearfix">
-                <li><a href="#" data-filter=".clearscore" class="active">
-                    <h5>ClearScore</h5>
-                </a></li>
-                <li><a class="" href="#" data-filter=".drivescore">
-                    <h5>DriveScore</h5>
-                </a></li>
-                <li><a class="" href="#" data-filter=".amex">
-                    <h5>American Express</h5>
-                </a></li>
-            </ul>
+    <!-- Portfolio -->
+    <section id="portfolio" class="bg-surface py-24 sm:py-32">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-16 fade-in-up">
+          <p class="text-accent font-semibold tracking-[0.2em] uppercase text-sm mb-4">Recent Work</p>
+          <h2 class="text-3xl sm:text-4xl font-bold mb-4 tracking-tight">Portfolio</h2>
+          <p class="text-text-muted text-lg max-w-2xl mx-auto">Explore recent projects crafted for leading brands.</p>
         </div>
-        <!--/Portfolio Filters -->
 
-        <!-- Portfolio Wrapper -->
-        <div class="isotope fadeInLeft animated wow grid" style="overflow: hidden; height: 720px;"
-             id="portfolio_wrapper">
-            <!-- Portfolio Item -->
-            <figure
-                    class="portfolio-item one-four clearscore isotope-item">
-                <a href="img/ClearScore.jpg" class="fancybox">
-                    <div class="portfolio_img">
-                        <img src="img/ClearScore.jpg" alt="Portfolio 1">
-                    </div>
-                    <figcaption>
-                        <div>
-                            <h2>ClearScore <span>ID Holders</span></h2>
-                        </div>
-                    </figcaption>
+        <!-- Portfolio grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="portfolio-grid">
+          <!-- ClearScore -->
+          <div class="portfolio-card group cursor-pointer rounded-xl overflow-hidden bg-card fade-in-up" data-category="clearscore" style="transition-delay: 0ms;">
+            <div class="relative overflow-hidden">
+              <img src="img/ClearScore.jpg" alt="ClearScore ID card holders" class="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-300">
+              <div class="absolute inset-0 bg-page/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <span class="text-white font-bold text-lg">ClearScore ID Holders</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- DriveScore -->
+          <div class="portfolio-card group cursor-pointer rounded-xl overflow-hidden bg-card fade-in-up" data-category="drivescore" style="transition-delay: 150ms;">
+            <div class="relative overflow-hidden">
+              <img src="img/DriveScore.jpg" alt="DriveScore ID card holders" class="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-300">
+              <div class="absolute inset-0 bg-page/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <span class="text-white font-bold text-lg">DriveScore ID Holders</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- American Express -->
+          <div class="portfolio-card group cursor-pointer rounded-xl overflow-hidden bg-card fade-in-up" data-category="amex" style="transition-delay: 300ms;">
+            <div class="relative overflow-hidden">
+              <img src="img/amex.JPG" alt="American Express ID card holders" class="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-300">
+              <div class="absolute inset-0 bg-page/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <span class="text-white font-bold text-lg">American Express ID Holders</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Divider -->
+    <div class="section-divider"></div>
+
+    <!-- Contact -->
+    <section id="contact" class="bg-page py-24 sm:py-32">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-16 fade-in-up">
+          <p class="text-accent font-semibold tracking-[0.2em] uppercase text-sm mb-4">Get Started</p>
+          <h2 class="text-3xl sm:text-4xl font-bold mb-4 tracking-tight">Contact</h2>
+          <p class="text-text-muted text-lg max-w-2xl mx-auto">Interested in getting your own ID card holders made? I'd love to hear from you.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+          <!-- Contact info -->
+          <div class="fade-in-up" style="transition-delay: 0ms;">
+            <div class="flex items-start gap-4 mb-6">
+              <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0 mt-1">
+                <i class="fa-solid fa-envelope text-accent"></i>
+              </div>
+              <div>
+                <h3 class="font-semibold text-lg mb-1">Email</h3>
+                <a href="mailto:contact.fusioncreations@gmail.com" class="text-accent hover:text-accent-hover transition-colors break-all">
+                  contact.fusioncreations@gmail.com
                 </a>
-            </figure>
-            <!--/Portfolio Item -->
+              </div>
+            </div>
+            <p class="text-text-muted leading-relaxed">
+              Send me a message using the form or email directly. I typically respond within 24 hours.
+            </p>
+          </div>
 
-            <!-- Portfolio Item-->
-            <figure style="position: absolute; left: 0px; top: 0px;"
-                    class="portfolio-item one-four drivescore isotope-item">
-                <a href="img/DriveScore.jpg" class="fancybox">
-                    <div class="portfolio_img"><img src="img/DriveScore.jpg" alt="Portfolio 1"></div>
-                    <figcaption>
-                        <div>
-                            <h2>DriveScore <span>ID Holders</span></h2>
-                        </div>
-                    </figcaption>
-                </a>
-            </figure>
-            <!--/Portfolio Item -->
-
-            <!-- Portfolio Item -->
-            <figure style="position: absolute; left: 0px; top: 0px;"
-                    class="portfolio-item one-four amex isotope-item">
-                <a href="img/amex.JPG" class="fancybox">
-                    <div class="portfolio_img"><img src="img/amex.JPG" alt="Portfolio 1"></div>
-                    <figcaption>
-                        <div>
-                            <h2>American Express <span>ID Holders</span></h2>
-
-                        </div>
-                    </figcaption>
-                </a>
-            </figure>
-            <!--/Portfolio Item-->
-
+          <!-- Contact form -->
+          <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="space-y-5 fade-in-up" style="transition-delay: 150ms;">
+            <input type="hidden" name="form-name" value="contact">
+            <p class="hidden">
+              <label>Don't fill this out: <input name="bot-field"></label>
+            </p>
+            <div>
+              <label for="name" class="block text-sm font-semibold mb-2">Name</label>
+              <input type="text" id="name" name="name" required placeholder="Your name"
+                class="glow-input w-full bg-card border border-border rounded-lg px-4 py-3 text-text-primary placeholder-text-subtle focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-shadow">
+            </div>
+            <div>
+              <label for="email" class="block text-sm font-semibold mb-2">Email</label>
+              <input type="email" id="email" name="email" required placeholder="you@example.com"
+                class="glow-input w-full bg-card border border-border rounded-lg px-4 py-3 text-text-primary placeholder-text-subtle focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-shadow">
+            </div>
+            <div>
+              <label for="message" class="block text-sm font-semibold mb-2">Message</label>
+              <textarea id="message" name="message" required rows="5" placeholder="Tell me about your project..."
+                class="glow-input w-full bg-card border border-border rounded-lg px-4 py-3 text-text-primary placeholder-text-subtle focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-shadow resize-y"></textarea>
+            </div>
+            <button type="submit"
+              class="glow-btn w-full sm:w-auto bg-accent hover:bg-accent-hover text-white font-semibold px-8 py-3 rounded-lg">
+              Send Message
+            </button>
+          </form>
         </div>
-        <!--/Portfolio Wrapper -->
+      </div>
+    </section>
+  </main>
 
+  <!-- Footer -->
+  <footer class="bg-surface border-t border-border py-6">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 text-center text-text-subtle text-sm">
+      &copy; <span id="year"></span> Fusion Creations. All rights reserved.
     </div>
-    <!--/Portfolio Filters -->
+  </footer>
 
-    <div class="portfolio_btm"></div>
-</section>
-<!--/Portfolio -->
+  <!-- Lightbox modal -->
+  <div id="lightbox" class="fixed inset-0 z-[100] hidden items-center justify-center bg-page/90 backdrop-blur-sm" role="dialog" aria-modal="true" aria-label="Image lightbox">
+    <button id="lightbox-close" class="absolute top-6 right-6 text-white text-3xl hover:text-accent transition-colors focus:outline-none" aria-label="Close lightbox">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+    <img id="lightbox-img" src="" alt="" class="max-w-[90vw] max-h-[85vh] rounded-lg shadow-2xl">
+  </div>
 
-<!-- How It Works -->
-<section id="howItWorks" class="how-it-works-section">
-    <div class="container">
-        <h2>How It Works</h2>
-        <h6>The Process in Detail</h6>
-        <div class="inner_section">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="step-box">
-                        <img src="img/quantity.png" alt="Step 1">
-                        <h4>Determine the Number of Holders</h4>
-                        <p>A minimum order of 10 holders is required.</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="step-box">
-                        <img src="img/colourSelect.png" alt="Step 2">
-                        <h4>Select Colours and Confirm Sizes</h4>
-                        <p>I have a vast array of colours available and we can work together to find the right colour
-                            for you.</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="step-box">
-                        <img src="img/finalise.jpg" alt="Step 3">
-                        <h4>Finalise the Design</h4>
-                        <p>To get final sign off on designs, colours, and numbers.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="step-box">
-                        <img src="img/deadline.jpg" alt="Step 4">
-                        <h4>Set a Deadline</h4>
-                        <p>This depends on the complexity of the design and quantity required</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="step-box">
-                        <img src="img/printer.png" alt="Step 5">
-                        <h4>Evaluate Feasibility and Finalise Order</h4>
-                        <p>The minimum price per item is £6, subject to design and colour requirements.</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="step-box">
-                        <img src="img/payment.jpg" alt="Step 6" style="width: 280px">
-                        <h4>Payment</h4>
-                        <p>Payment is invoiced upon delivery of the final product.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- /How It Works -->
+  <script>
+    (() => {
+      // --- Year ---
+      document.getElementById('year').textContent = new Date().getFullYear();
 
-<!--Aboutus-->
-<section id="aboutUs">
-    <div class="inner_wrapper about-us aboutUs-container fadeInLeft animated wow">
-        <div class="container">
-            <h2>About Me</h2>
-            <h6>3D Printing Enthusiast and Professional</h6>
-            <div class="inner_section">
-                <div class="row">
-                    <div class="col-md-6"><img class="img-responsive" src="img/profile.jpg" align=""></div>
-                    <div class="col-md-6">
-                        <h3>My Passion</h3>
-                        <p>I specialise in creating custom 3D printed ID cardholders for companies. With a keen eye for
-                            detail and a passion for design, I turn ideas into tangible products. </p>
+      // --- Navbar scroll effect ---
+      const navbar = document.getElementById('navbar');
+      const heroSection = document.getElementById('home');
 
-                        <ul class="about-us-list">
-                            <li class="points">Tailored to your company's needs</li>
-                            <li class="points">High-quality materials and designs</li>
-                            <li class="points">Innovative and functional products</li>
-                        </ul><!-- /.about-us-list -->
+      const navObserver = new IntersectionObserver(
+        ([entry]) => {
+          navbar.classList.toggle('nav-scrolled', !entry.isIntersecting);
+        },
+        { threshold: 0.1 }
+      );
+      navObserver.observe(heroSection);
 
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!--Aboutus-->
+      // --- Mobile menu toggle ---
+      const menuToggle = document.getElementById('menu-toggle');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const menuIcon = menuToggle.querySelector('i');
 
-<!--Footer-->
-<footer class="footer_wrapper" id="contact">
-    <div class="container">
-        <section class="page_section contact">
-            <div class="contact_section">
-                <h2>Contact</h2>
-                <h6>If you are interested in getting your own ID cardholders made, I'd love to hear from you!</h6>
+      menuToggle.addEventListener('click', () => {
+        const isOpen = !mobileMenu.classList.contains('hidden');
+        mobileMenu.classList.toggle('hidden');
+        menuIcon.classList.toggle('fa-bars', isOpen);
+        menuIcon.classList.toggle('fa-xmark', !isOpen);
+        menuToggle.setAttribute('aria-expanded', String(!isOpen));
+      });
 
-            </div>
-            <div class="row">
-                <div class="col-lg-4 wow fadeInLeft">
-                    <div class="contact_info">
-                        <div class="detail">
-                            <h4 style="color: #777">Email me</h4>
-                            <p>contact.fusioncreations@gmail.com</p>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="col-lg-8 wow fadeInLeft delay-06s">
-                    <div class="form">
-                        <form id="contact-form" data-netlify="true">
-                            <input class="input-text" type="text" name="name" placeholder="Your Name *" required>
-                            <input class="input-text" type="email" name="email" placeholder="Your E-mail *" required>
-                            <textarea class="input-text text-area" name="message" placeholder="Your Message *"
-                                      required></textarea>
-                            <input class="input-btn" type="submit" value="Send Message">
-                        </form>
-                        <div id="form-message"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-</footer>
-<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
-<script type="text/javascript" src="js/bootstrap.min.js"></script>
-<script type="text/javascript" src="js/jquery-scrolltofixed.js"></script>
-<script type="text/javascript" src="js/jquery.nav.js"></script>
-<script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
-<script type="text/javascript" src="js/jquery.isotope.js"></script>
-<script src="js/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
-<script type="text/javascript" src="js/wow.js"></script>
-<script type="text/javascript" src="js/custom.js"></script>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const filters = document.querySelectorAll("#filters a");
-        const portfolioItems = document.querySelectorAll(".portfolio-item");
-
-        filters.forEach(filter => {
-            filter.addEventListener("click", function (e) {
-                e.preventDefault();
-                filters.forEach(f => f.classList.remove("active"));
-                this.classList.add("active");
-
-                const filterValue = this.getAttribute("data-filter");
-                portfolioItems.forEach(item => {
-                    if (item.classList.contains(filterValue.substring(1))) {
-                        item.style.display = "block";
-                    } else {
-                        item.style.display = "none";
-                    }
-                });
-            });
+      // Close mobile menu on link click
+      document.querySelectorAll('.mobile-nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
+          menuIcon.classList.add('fa-bars');
+          menuIcon.classList.remove('fa-xmark');
+          menuToggle.setAttribute('aria-expanded', 'false');
         });
+      });
 
-        // Show ClearScore items by default
-        document.querySelector('[data-filter=".clearscore"]').click();
-    });
-</script>
+      // --- Active nav link highlighting ---
+      const sections = document.querySelectorAll('section[id], #home');
+      const navLinks = document.querySelectorAll('.nav-link');
 
+      const sectionObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const id = entry.target.id;
+              navLinks.forEach(link => {
+                link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+                link.classList.toggle('text-accent', link.getAttribute('href') === `#${id}`);
+                link.classList.toggle('text-text-muted', link.getAttribute('href') !== `#${id}`);
+              });
+            }
+          });
+        },
+        { rootMargin: '-40% 0px -60% 0px' }
+      );
+      sections.forEach(section => sectionObserver.observe(section));
 
+      // --- Lightbox ---
+      const portfolioCards = document.querySelectorAll('.portfolio-card');
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightbox-img');
+      const lightboxClose = document.getElementById('lightbox-close');
+      let previousFocus = null;
+
+      function openLightbox(src, alt) {
+        previousFocus = document.activeElement;
+        lightboxImg.src = src;
+        lightboxImg.alt = alt;
+        lightbox.classList.remove('hidden');
+        lightbox.classList.add('flex');
+        document.body.classList.add('lightbox-open');
+        lightboxClose.focus();
+      }
+
+      function closeLightbox() {
+        lightbox.classList.add('hidden');
+        lightbox.classList.remove('flex');
+        document.body.classList.remove('lightbox-open');
+        lightboxImg.src = '';
+        if (previousFocus) previousFocus.focus();
+      }
+
+      portfolioCards.forEach(card => {
+        card.addEventListener('click', () => {
+          const img = card.querySelector('img');
+          openLightbox(img.src, img.alt);
+        });
+      });
+
+      lightboxClose.addEventListener('click', closeLightbox);
+
+      lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) closeLightbox();
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !lightbox.classList.contains('hidden')) {
+          closeLightbox();
+        }
+      });
+
+      // Focus trap inside lightbox
+      lightbox.addEventListener('keydown', (e) => {
+        if (e.key === 'Tab') {
+          e.preventDefault();
+          lightboxClose.focus();
+        }
+      });
+
+      // --- Scroll-triggered fade-in animations ---
+      const fadeElements = document.querySelectorAll('.fade-in-up');
+      const motionOk = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      if (motionOk) {
+        const fadeObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                fadeObserver.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+        );
+        fadeElements.forEach(el => fadeObserver.observe(el));
+      } else {
+        fadeElements.forEach(el => el.classList.add('visible'));
+      }
+
+      // --- Scroll progress bar + hero parallax + orb parallax ---
+      const scrollProgress = document.getElementById('scroll-progress');
+      const heroBg = document.getElementById('hero-bg');
+
+      window.addEventListener('scroll', () => {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+
+        // Progress bar
+        const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        scrollProgress.style.width = progress + '%';
+
+        // Hero parallax — image moves at 40% of scroll speed
+        if (motionOk) {
+          heroBg.style.transform = `translateY(${scrollTop * 0.4}px)`;
+        }
+      }, { passive: true });
+
+      // --- Card tilt effect ---
+      if (motionOk) {
+        portfolioCards.forEach(card => {
+          card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const rotateX = ((y - centerY) / centerY) * -8;
+            const rotateY = ((x - centerX) / centerX) * 8;
+            card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+          });
+
+          card.addEventListener('mouseleave', () => {
+            card.style.transform = '';
+          });
+        });
+      }
+    })();
+  </script>
 </body>
 </html>

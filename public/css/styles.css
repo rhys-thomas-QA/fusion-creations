@@ -1,0 +1,156 @@
+/* Navigation scroll effect */
+.nav-scrolled {
+  background-color: rgba(17, 17, 24, 0.95) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+/* Animated nav underlines */
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #3b82f6;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* Scroll progress bar */
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, #3b82f6, #60a5fa);
+  z-index: 9999;
+  transition: width 0.1s linear;
+  box-shadow: 0 0 8px rgba(59, 130, 246, 0.6);
+}
+
+/* Glow button */
+.glow-btn {
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
+  transition: box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+.glow-btn:hover {
+  box-shadow: 0 0 25px rgba(59, 130, 246, 0.6), 0 0 50px rgba(59, 130, 246, 0.2);
+}
+
+/* Glow outline button */
+.glow-btn-outline {
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.15);
+  transition: box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+.glow-btn-outline:hover {
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.4), 0 0 40px rgba(59, 130, 246, 0.15);
+}
+
+/* Card lift + glow + tilt on hover */
+.portfolio-card {
+  transition: box-shadow 0.3s ease;
+  transform-style: preserve-3d;
+  perspective: 800px;
+}
+
+.portfolio-card:hover {
+  box-shadow: 0 8px 30px rgba(59, 130, 246, 0.2), 0 0 15px rgba(59, 130, 246, 0.1);
+}
+
+.portfolio-card.hidden {
+  opacity: 0;
+  transform: scale(0.95);
+  pointer-events: none;
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+/* Form input glow on focus */
+.glow-input:focus {
+  box-shadow: 0 0 0 2px #3b82f6, 0 0 15px rgba(59, 130, 246, 0.25);
+}
+
+/* Gradient heading */
+.gradient-heading {
+  background: linear-gradient(135deg, #f1f5f9 0%, #3b82f6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Section divider */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.4) 30%, rgba(59, 130, 246, 0.4) 70%, transparent);
+  box-shadow: 0 0 8px rgba(59, 130, 246, 0.15);
+}
+
+/* Staggered fade-in animation */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.fade-in-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Lightbox */
+.lightbox-open {
+  overflow: hidden;
+}
+
+/* Hero parallax */
+.parallax-bg {
+  will-change: transform;
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .fade-in-up {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+  .portfolio-card {
+    transition: none;
+  }
+  .portfolio-card:hover {
+    transform: none;
+  }
+  .parallax-bg {
+    transform: none !important;
+  }
+  .nav-link::after {
+    transition: none;
+  }
+  #scroll-progress {
+    transition: none;
+  }
+}
