@@ -5,7 +5,8 @@
   if (!section || !images.length) return;
 
   // Preload frames for each turntable, with a frame offset per holder
-  const FRAME_OFFSET = Math.round(TOTAL_FRAMES / 8); // 45° offset (144/8 = 18 frames)
+  // Custom offsets per holder so all fronts are visible during scroll
+  const OFFSETS = [0, 12, -12]; // Amex straight, CS +30°, DS -30°
 
   const turntables = Array.from(images).map((img, index) => {
     const folder = img.dataset.folder;
@@ -15,7 +16,7 @@
       frame.src = `img/${folder}/frame_${String(i).padStart(3, '0')}.webp`;
       frames.push(frame);
     }
-    return { img, frames, currentFrame: -1, offset: index * FRAME_OFFSET };
+    return { img, frames, currentFrame: -1, offset: OFFSETS[index] || 0 };
   });
 
   function showFrame(t, index) {
