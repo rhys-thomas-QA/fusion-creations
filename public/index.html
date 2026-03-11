@@ -105,44 +105,30 @@
     <div class="section-divider"></div>
 
     <!-- Portfolio -->
-    <section id="portfolio" class="bg-surface py-24 sm:py-32">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6">
-        <div class="text-center mb-16 fade-in-up">
+    <section id="portfolio" class="bg-surface relative" style="min-height: 300vh;">
+      <!-- Header - scrolls away naturally -->
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 pt-24 sm:pt-32 pb-8">
+        <div class="text-center fade-in-up">
           <p class="text-accent font-semibold tracking-[0.2em] uppercase text-sm mb-4">Recent Work</p>
           <h2 class="text-3xl sm:text-4xl font-bold mb-4 tracking-tight">Portfolio</h2>
           <p class="text-text-muted text-lg max-w-2xl mx-auto">Explore recent projects crafted for leading brands.</p>
         </div>
+      </div>
 
-        <!-- Portfolio grid -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="portfolio-grid">
-          <!-- ClearScore -->
-          <div class="portfolio-card group cursor-pointer rounded-xl overflow-hidden bg-card fade-in-up" data-category="clearscore" style="transition-delay: 0ms;">
-            <div class="relative overflow-hidden">
-              <img src="img/ClearScore.jpg" alt="ClearScore ID card holders" class="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-300">
-              <div class="absolute inset-0 bg-page/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                <span class="text-white font-bold text-lg">ClearScore ID Holders</span>
-              </div>
-            </div>
+      <!-- 3D Turntables - stick while section scrolls -->
+      <div id="turntable" class="turntable fade-in-up">
+        <div class="turntable-row">
+          <div class="turntable-item">
+            <img class="turntable-img" data-folder="holder-rotation-amex" src="img/holder-rotation-amex/frame_001.webp" alt="Amex card holder" draggable="false">
+            <p class="turntable-label"><strong>American Express</strong><br>150 delivered for internal event</p>
           </div>
-
-          <!-- DriveScore -->
-          <div class="portfolio-card group cursor-pointer rounded-xl overflow-hidden bg-card fade-in-up" data-category="drivescore" style="transition-delay: 150ms;">
-            <div class="relative overflow-hidden">
-              <img src="img/DriveScore.jpg" alt="DriveScore ID card holders" class="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-300">
-              <div class="absolute inset-0 bg-page/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                <span class="text-white font-bold text-lg">DriveScore ID Holders</span>
-              </div>
-            </div>
+          <div class="turntable-item">
+            <img class="turntable-img" data-folder="holder-rotation-cs" src="img/holder-rotation-cs/frame_001.webp" alt="CS card holder" draggable="false">
+            <p class="turntable-label"><strong>ClearScore</strong><br>820 delivered in 6 weeks</p>
           </div>
-
-          <!-- American Express -->
-          <div class="portfolio-card group cursor-pointer rounded-xl overflow-hidden bg-card fade-in-up" data-category="amex" style="transition-delay: 300ms;">
-            <div class="relative overflow-hidden">
-              <img src="img/amex.JPG" alt="American Express ID card holders" class="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-300">
-              <div class="absolute inset-0 bg-page/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                <span class="text-white font-bold text-lg">American Express ID Holders</span>
-              </div>
-            </div>
+          <div class="turntable-item">
+            <img class="turntable-img" data-folder="holder-rotation-ds" src="img/holder-rotation-ds/frame_001.webp" alt="DriveScore card holder" draggable="false">
+            <p class="turntable-label"><strong>DriveScore</strong><br>Adhoc holder produced for new starters</p>
           </div>
         </div>
       </div>
@@ -217,6 +203,20 @@
               <label for="secondary-text" class="block text-sm font-semibold mb-2">Text Line 2</label>
               <input type="text" id="secondary-text" placeholder="DOE" maxlength="20" value="DOE"
                 class="glow-input w-full bg-card border border-border rounded-lg px-4 py-3 text-text-primary placeholder-text-subtle focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-shadow">
+            </div>
+
+            <!-- Logo size slider -->
+            <div>
+              <label for="logo-scale" class="block text-sm font-semibold mb-2">Logo Size <span id="logo-scale-value" class="text-text-muted font-normal">100%</span></label>
+              <input type="range" id="logo-scale" min="0.3" max="2" step="0.05" value="1"
+                class="w-full accent-accent cursor-pointer">
+            </div>
+
+            <!-- Font size slider -->
+            <div>
+              <label for="font-scale" class="block text-sm font-semibold mb-2">Text Size <span id="font-scale-value" class="text-text-muted font-normal">100%</span></label>
+              <input type="range" id="font-scale" min="0.3" max="2" step="0.05" value="1"
+                class="w-full accent-accent cursor-pointer">
             </div>
 
             <!-- Action buttons -->
@@ -320,8 +320,10 @@
     <img id="lightbox-img" src="" alt="" class="max-w-[90vw] max-h-[85vh] rounded-lg shadow-2xl">
   </div>
 
+  <script src="js/turntable.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
   <script src="js/designer.js" defer></script>
   <script>
     (() => {

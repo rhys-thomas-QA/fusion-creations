@@ -9,17 +9,8 @@
   let logoImage = null;
   let logoTrimBounds = null;
   let removeWhiteBg = true;
-
-  // Holder shape constants (shared between 2D texture + 3D geometry)
-  const HOLDER_W = 300;
-  const HOLDER_H = 480;
-  const CORNER_R = 40;
-  const HEADER_H = 70;
-  const SLOT_W = 120;
-  const SLOT_H = 18;
-  const HOLE_R = 10;
-  const HOLE_INSET = 50;
-  const THICKNESS = 12;
+  let logoScale = 1.0;    // 0.3 – 2.0
+  let fontScale = 1.0;    // 0.3 – 2.0
 
   // =============================================
   // DOM REFS
@@ -35,42 +26,16 @@
   const logoInfo = document.getElementById('logo-info');
   const logoRemove = document.getElementById('logo-remove');
   const whiteBgToggle = document.getElementById('remove-white-bg');
+  const logoScaleInput = document.getElementById('logo-scale');
+  const logoScaleValue = document.getElementById('logo-scale-value');
+  const fontScaleInput = document.getElementById('font-scale');
+  const fontScaleValue = document.getElementById('font-scale-value');
   const downloadBtn = document.getElementById('download-preview');
   const quoteBtn = document.getElementById('get-quote');
 
   // =============================================
   // UTILITIES
   // =============================================
-  function hexToRgb(hex) {
-    return {
-      r: parseInt(hex.slice(1, 3), 16),
-      g: parseInt(hex.slice(3, 5), 16),
-      b: parseInt(hex.slice(5, 7), 16)
-    };
-  }
-
-  // =============================================
-  // 2D TEXTURE CANVAS (offscreen — generates the front-face texture)
-  // =============================================
-  const texCanvas = document.createElement('canvas');
-  const ctx = texCanvas.getContext('2d');
-  texCanvas.width = HOLDER_W * 2;
-  texCanvas.height = HOLDER_H * 2;
-
-  function roundRectPath(c, x, y, w, h, r) {
-    c.beginPath();
-    c.moveTo(x + r, y);
-    c.lineTo(x + w - r, y);
-    c.quadraticCurveTo(x + w, y, x + w, y + r);
-    c.lineTo(x + w, y + h - r);
-    c.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
-    c.lineTo(x + r, y + h);
-    c.quadraticCurveTo(x, y + h, x, y + h - r);
-    c.lineTo(x, y + r);
-    c.quadraticCurveTo(x, y, x + r, y);
-    c.closePath();
-  }
-
   function getTrimmedImageBounds(img) {
     const tc = document.createElement('canvas');
     const tCtx = tc.getContext('2d');
@@ -112,47 +77,47 @@
     return cleaned;
   }
 
-  function drawTexture() {
-    const s = 2; // scale factor for crisp texture
-    const w = HOLDER_W * s;
-    const h = HOLDER_H * s;
-    ctx.clearRect(0, 0, w, h);
+  // =============================================
+  // 2D OVERLAY TEXTURE (transparent canvas for logo + text)
+  // =============================================
+  const TEX_W = 600;
+  const TEX_H = 960;
+  const texCanvas = document.createElement('canvas');
+  const ctx = texCanvas.getContext('2d');
+  texCanvas.width = TEX_W;
+  texCanvas.height = TEX_H;
 
-    // Fill with holder colour (base)
-    ctx.fillStyle = holderColour;
-    ctx.fillRect(0, 0, w, h);
+  function drawOverlayTexture() {
+    ctx.clearRect(0, 0, TEX_W, TEX_H);
 
-    // Subtle gradient
-    const grad = ctx.createLinearGradient(0, 0, w, h);
-    grad.addColorStop(0, 'rgba(255,255,255,0.04)');
-    grad.addColorStop(0.4, 'rgba(0,0,0,0)');
-    grad.addColorStop(1, 'rgba(0,0,0,0.04)');
-    ctx.fillStyle = grad;
-    ctx.fillRect(0, 0, w, h);
-
-    // Logo (engraved using detail colour)
-    const logoAreaTop = (HEADER_H + 20) * s;
-    const textAreaH = 100 * s;
-    const logoAreaBottom = h - 25 * s - textAreaH;
-    const logoMaxW = (HOLDER_W - 50) * s;
+    // We'll measure layout relative to the holder face.
+    // Top ~15% is header (lanyard area), logo goes in middle, text at bottom.
+    const headerH = TEX_H * 0.15;
+    const textAreaH = TEX_H * 0.2;
+    const logoAreaTop = headerH + TEX_H * 0.04;
+    const logoAreaBottom = TEX_H - textAreaH - TEX_H * 0.04;
+    const logoMaxW = TEX_W * 0.75;
     const logoMaxH = logoAreaBottom - logoAreaTop;
 
+    // Logo
     if (logoImage && logoTrimBounds && logoMaxH > 20) {
       const bounds = logoTrimBounds;
       const aspect = bounds.sw / bounds.sh;
       let drawW, drawH;
       if (aspect > logoMaxW / Math.max(logoMaxH, 1)) {
-        drawW = Math.min(logoMaxW, 220 * s);
+        drawW = Math.min(logoMaxW, TEX_W * 0.7);
         drawH = drawW / aspect;
       } else {
-        drawH = Math.min(logoMaxH, 200 * s);
+        drawH = Math.min(logoMaxH, TEX_H * 0.4);
         drawW = drawH * aspect;
       }
+      drawW *= logoScale;
+      drawH *= logoScale;
 
-      const logoX = w / 2 - drawW / 2;
+      const logoX = TEX_W / 2 - drawW / 2;
       const logoY = logoAreaTop + (logoMaxH - drawH) / 2;
 
-      // Draw tinted logo
+      // Tint logo with detail colour
       const off = document.createElement('canvas');
       const offCtx = off.getContext('2d');
       off.width = drawW;
@@ -169,21 +134,19 @@
       ctx.restore();
     }
 
-    // Text (engraved using detail colour)
-    const textX = 28 * s;
-    const textBaseY = h - 60 * s;
-    const fontSize = 36 * s;
+    // Text
+    const fontSize = Math.round(72 * fontScale);
+    const textX = TEX_W * 0.09;
+    const textBaseY = TEX_H - TEX_H * 0.1;
 
     ctx.save();
     ctx.font = `900 ${fontSize}px Inter, system-ui, sans-serif`;
     ctx.textAlign = 'left';
 
-    function drawEngravedText(text, x, y) {
-      // Outline stroke
-      ctx.lineWidth = 1.5 * s;
+    function drawText(text, x, y) {
+      ctx.lineWidth = 3;
       ctx.strokeStyle = detailColour;
       ctx.strokeText(text, x, y);
-      // Fill
       ctx.fillStyle = detailColour;
       ctx.globalAlpha = 0.85;
       ctx.fillText(text, x, y);
@@ -191,11 +154,11 @@
     }
 
     if (secondaryText.trim()) {
-      drawEngravedText(secondaryText.toUpperCase(), textX, textBaseY);
+      drawText(secondaryText.toUpperCase(), textX, textBaseY);
     }
     if (primaryText.trim()) {
-      const lineGap = secondaryText.trim() ? (fontSize + 8 * s) : 0;
-      drawEngravedText(primaryText.toUpperCase(), textX, textBaseY - lineGap);
+      const lineGap = secondaryText.trim() ? (fontSize + 12) : 0;
+      drawText(primaryText.toUpperCase(), textX, textBaseY - lineGap);
     }
     ctx.restore();
   }
@@ -210,7 +173,7 @@
   scene.background = null;
 
   const camera = new THREE.PerspectiveCamera(40, 400 / 560, 0.1, 2000);
-  camera.position.set(0, 0, 700);
+  camera.position.set(0, 200, 500);
 
   const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
   renderer.setSize(400, 560);
@@ -239,133 +202,99 @@
   controls.enableDamping = true;
   controls.dampingFactor = 0.08;
   controls.enableZoom = true;
-  controls.minDistance = 400;
-  controls.maxDistance = 1000;
+  controls.minDistance = 100;
+  controls.maxDistance = 800;
   controls.enablePan = false;
   controls.autoRotate = true;
   controls.autoRotateSpeed = 1.5;
-  controls.target.set(0, 0, 0);
 
   controls.addEventListener('start', () => { controls.autoRotate = false; });
 
-  // --- Build 3D holder shape ---
-  function buildHolderShape() {
-    const w = HOLDER_W;
-    const h = HOLDER_H;
-    const r = CORNER_R;
-
-    // Outer rounded rectangle (Y-up: bottom-left is origin)
-    const shape = new THREE.Shape();
-    shape.moveTo(-w / 2 + r, -h / 2);
-    shape.lineTo(w / 2 - r, -h / 2);
-    shape.quadraticCurveTo(w / 2, -h / 2, w / 2, -h / 2 + r);
-    shape.lineTo(w / 2, h / 2 - r);
-    shape.quadraticCurveTo(w / 2, h / 2, w / 2 - r, h / 2);
-    shape.lineTo(-w / 2 + r, h / 2);
-    shape.quadraticCurveTo(-w / 2, h / 2, -w / 2, h / 2 - r);
-    shape.lineTo(-w / 2, -h / 2 + r);
-    shape.quadraticCurveTo(-w / 2, -h / 2, -w / 2 + r, -h / 2);
-
-    // Lanyard slot hole (rounded rect)
-    const slotCY = h / 2 - HEADER_H / 2;
-    const slotPath = new THREE.Path();
-    const sr = SLOT_H / 2;
-    slotPath.moveTo(-SLOT_W / 2 + sr, slotCY - SLOT_H / 2);
-    slotPath.lineTo(SLOT_W / 2 - sr, slotCY - SLOT_H / 2);
-    slotPath.quadraticCurveTo(SLOT_W / 2, slotCY - SLOT_H / 2, SLOT_W / 2, slotCY - SLOT_H / 2 + sr);
-    slotPath.lineTo(SLOT_W / 2, slotCY + SLOT_H / 2 - sr);
-    slotPath.quadraticCurveTo(SLOT_W / 2, slotCY + SLOT_H / 2, SLOT_W / 2 - sr, slotCY + SLOT_H / 2);
-    slotPath.lineTo(-SLOT_W / 2 + sr, slotCY + SLOT_H / 2);
-    slotPath.quadraticCurveTo(-SLOT_W / 2, slotCY + SLOT_H / 2, -SLOT_W / 2, slotCY + SLOT_H / 2 - sr);
-    slotPath.lineTo(-SLOT_W / 2, slotCY - SLOT_H / 2 + sr);
-    slotPath.quadraticCurveTo(-SLOT_W / 2, slotCY - SLOT_H / 2, -SLOT_W / 2 + sr, slotCY - SLOT_H / 2);
-    shape.holes.push(slotPath);
-
-    // Corner holes (circles)
-    const holeCY = slotCY;
-    const segments = 32;
-
-    const leftHole = new THREE.Path();
-    leftHole.absarc(-w / 2 + HOLE_INSET, holeCY, HOLE_R, 0, Math.PI * 2, false);
-    shape.holes.push(leftHole);
-
-    const rightHole = new THREE.Path();
-    rightHole.absarc(w / 2 - HOLE_INSET, holeCY, HOLE_R, 0, Math.PI * 2, false);
-    shape.holes.push(rightHole);
-
-    return shape;
-  }
-
-  // Materials and mesh
-  const frontTexture = new THREE.CanvasTexture(texCanvas);
-  frontTexture.encoding = THREE.sRGBEncoding;
-
-  let frontMaterial = new THREE.MeshStandardMaterial({
-    map: frontTexture,
-    roughness: 0.6,
-    metalness: 0.1,
-  });
-
-  let backMaterial = new THREE.MeshStandardMaterial({
+  // =============================================
+  // MATERIALS
+  // =============================================
+  const holderMaterial = new THREE.MeshStandardMaterial({
     color: holderColour,
-    roughness: 0.6,
-    metalness: 0.1,
+    roughness: 0.45,
+    metalness: 0.05,
   });
 
-  let sideMaterial = new THREE.MeshStandardMaterial({
-    color: holderColour,
-    roughness: 0.5,
-    metalness: 0.1,
+  // Overlay texture for custom logo + text
+  const overlayTexture = new THREE.CanvasTexture(texCanvas);
+  overlayTexture.encoding = THREE.sRGBEncoding;
+
+  const overlayMaterial = new THREE.MeshBasicMaterial({
+    map: overlayTexture,
+    transparent: true,
+    depthWrite: false,
+    polygonOffset: true,
+    polygonOffsetFactor: -1,
   });
 
-  let holderMesh = null;
+  // Track references
+  let modelGroup = null;
+  let overlayPlane = null;
 
-  function buildMesh() {
-    if (holderMesh) scene.remove(holderMesh);
+  // =============================================
+  // LOAD GLB MODEL
+  // =============================================
+  const loader = new THREE.GLTFLoader();
 
-    const shape = buildHolderShape();
-    const geometry = new THREE.ExtrudeGeometry(shape, {
-      depth: THICKNESS,
-      bevelEnabled: true,
-      bevelThickness: 2,
-      bevelSize: 2,
-      bevelSegments: 3,
-      curveSegments: 32,
+  loader.load('img/blank.glb', (gltf) => {
+    modelGroup = gltf.scene;
+
+    // Apply holder material to all meshes
+    modelGroup.traverse((child) => {
+      if (child.isMesh) {
+        child.material = holderMaterial;
+      }
     });
 
-    // Fix UV mapping for front face to map to our texture canvas
-    const posAttr = geometry.attributes.position;
-    const uvAttr = geometry.attributes.uv;
-    const normalAttr = geometry.attributes.normal;
+    // Centre and scale the model
+    const box = new THREE.Box3().setFromObject(modelGroup);
+    const center = box.getCenter(new THREE.Vector3());
+    const size = box.getSize(new THREE.Vector3());
 
-    for (let i = 0; i < posAttr.count; i++) {
-      const nz = normalAttr.getZ(i);
-      // Front face (normal pointing towards +Z)
-      if (nz > 0.9) {
-        const px = posAttr.getX(i);
-        const py = posAttr.getY(i);
-        // Map from shape coords to 0-1 UV
-        // Shape goes from -HOLDER_W/2 to HOLDER_W/2 in X
-        // and -HOLDER_H/2 to HOLDER_H/2 in Y
-        const u = (px + HOLDER_W / 2) / HOLDER_W;
-        const v = (py + HOLDER_H / 2) / HOLDER_H;
-        uvAttr.setXY(i, u, v);
-      }
-    }
-    uvAttr.needsUpdate = true;
+    modelGroup.position.sub(center);
 
-    // Assign material groups: ExtrudeGeometry creates groups [0]=front, [1]=back, [2]=sides
-    holderMesh = new THREE.Mesh(geometry, [frontMaterial, sideMaterial, sideMaterial]);
-    holderMesh.position.set(0, 0, -THICKNESS / 2);
-    scene.add(holderMesh);
-  }
+    const maxDim = Math.max(size.x, size.y, size.z);
+    const scale = 300 / maxDim;
+    modelGroup.scale.setScalar(scale);
 
-  // --- Update everything ---
+    scene.add(modelGroup);
+
+    // --- Create overlay plane for logo + text ---
+    const scaledBox = new THREE.Box3().setFromObject(modelGroup);
+    const sSize = scaledBox.getSize(new THREE.Vector3());
+    const sCenter = scaledBox.getCenter(new THREE.Vector3());
+
+    // Overlay covers the front face (XY plane at max Z)
+    const planeW = sSize.x * 0.88;
+    const planeH = sSize.y * 0.88;
+    const planeGeo = new THREE.PlaneGeometry(planeW, planeH);
+    overlayPlane = new THREE.Mesh(planeGeo, overlayMaterial);
+    overlayPlane.position.set(sCenter.x, sCenter.y, scaledBox.max.z + 0.3);
+    scene.add(overlayPlane);
+
+    // Adjust camera and controls
+    const dist = Math.max(sSize.x, sSize.y) * 1.8;
+    camera.position.set(0, 0, dist);
+    controls.target.set(0, 0, 0);
+    controls.minDistance = dist * 0.5;
+    controls.maxDistance = dist * 3;
+    controls.update();
+
+    // Initial draw
+    update();
+  });
+
+  // =============================================
+  // UPDATE
+  // =============================================
   function update() {
-    drawTexture();
-    frontTexture.needsUpdate = true;
-    backMaterial.color.set(holderColour);
-    sideMaterial.color.set(holderColour);
+    holderMaterial.color.set(holderColour);
+    drawOverlayTexture();
+    overlayTexture.needsUpdate = true;
   }
 
   // --- Render loop ---
@@ -374,6 +303,7 @@
     controls.update();
     renderer.render(scene, camera);
   }
+  animate();
 
   // =============================================
   // EVENT HANDLING
@@ -404,6 +334,22 @@
     secondaryText = e.target.value;
     update();
   }, 150));
+
+  if (logoScaleInput) {
+    logoScaleInput.addEventListener('input', (e) => {
+      logoScale = parseFloat(e.target.value);
+      logoScaleValue.textContent = Math.round(logoScale * 100) + '%';
+      update();
+    });
+  }
+
+  if (fontScaleInput) {
+    fontScaleInput.addEventListener('input', (e) => {
+      fontScale = parseFloat(e.target.value);
+      fontScaleValue.textContent = Math.round(fontScale * 100) + '%';
+      update();
+    });
+  }
 
   whiteBgToggle.addEventListener('change', () => {
     removeWhiteBg = whiteBgToggle.checked;
@@ -484,15 +430,9 @@
     const msg = document.getElementById('message');
     if (msg) {
       const text = [primaryText, secondaryText].filter(Boolean).join(' ');
-      msg.value = `Hi, I'd like a quote for custom ID card holders.\n\nText: ${text}\nHolder colour: ${holderColour.toUpperCase()}\nDetail colour: ${detailColour.toUpperCase()}\n\nLooking forward to hearing from you!`;
+      const logoNote = logoImage ? 'Logo attached in preview' : 'No logo uploaded';
+      msg.value = `Hi, I'd like a quote for custom ID card holders.\n\nText: ${text}\nHolder colour: ${holderColour.toUpperCase()}\nDetail colour: ${detailColour.toUpperCase()}\n${logoNote}\n\nLooking forward to hearing from you!`;
     }
     document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
-  });
-
-  // --- Init ---
-  document.fonts.ready.then(() => {
-    buildMesh();
-    update();
-    animate();
   });
 })();
