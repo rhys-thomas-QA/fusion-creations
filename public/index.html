@@ -26,6 +26,7 @@
   <meta name="twitter:image" content="https://fusion-creations.com/img/hero-image.jpg">
 
   <link rel="icon" href="img/favicon.png" type="image/png">
+  <link rel="preload" as="image" href="img/hero-image.webp" type="image/webp">
 
   <!-- Structured Data -->
   <script type="application/ld+json">
@@ -193,7 +194,10 @@
     <section id="home" class="relative min-h-screen flex items-center overflow-hidden">
       <!-- Background image with parallax -->
       <div id="hero-bg" class="parallax-bg absolute inset-0">
-        <img src="img/hero-image.jpg" alt="Custom 3D printed ID card holders showcase" class="w-full h-full object-cover" width="1920" height="1080" fetchpriority="high">
+        <picture>
+          <source srcset="img/hero-image.webp" type="image/webp">
+          <img src="img/hero-image.jpg" alt="Custom 3D printed ID card holders showcase" class="w-full h-full object-cover" width="1920" height="893" fetchpriority="high">
+        </picture>
         <!-- Gradient overlay: stronger on left for text readability -->
         <div class="absolute inset-0 bg-gradient-to-r from-page via-page/80 to-page/40 md:from-page md:via-page/70 md:to-transparent"></div>
       </div>
