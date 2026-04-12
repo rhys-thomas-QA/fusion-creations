@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://fusion-creations.com/sitemap.xml
+Llms-txt: https://fusion-creations.com/llms.txt
