@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blog | Fusion Creations</title>
+  <meta name="description" content="Insights, case studies, and guides on custom 3D printed badge holders for businesses. By Fusion Creations.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://fusion-creations.com/blog/">
+  <meta property="og:title" content="Blog | Fusion Creations">
+  <meta property="og:description" content="Insights, case studies, and guides on custom 3D printed badge holders for businesses.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://fusion-creations.com/blog/">
+  <meta property="og:image" content="https://fusion-creations.com/img/hero-image.webp">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18013443650"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-18013443650');
+  </script>
+  <link rel="icon" href="../img/favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            page: '#0a0a0f',
+            surface: '#111118',
+            card: '#1a1a24',
+            border: '#242430',
+            accent: '#3b82f6',
+            'accent-hover': '#60a5fa',
+            'text-primary': '#f1f5f9',
+            'text-muted': '#94a3b8',
+            'text-subtle': '#64748b',
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body class="bg-page text-text-primary font-sans">
+
+  <!-- Navigation -->
+  <header class="fixed top-0 left-0 w-full z-50 bg-surface/80 backdrop-blur-lg nav-scrolled">
+    <nav class="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
+      <a href="/" class="text-xl font-bold tracking-tight">
+        <span class="text-accent">Fusion</span> Creations
+      </a>
+      <ul class="hidden md:flex items-center gap-8 text-sm font-semibold">
+        <li><a href="/" class="text-text-muted hover:text-accent transition-colors">Home</a></li>
+        <li><a href="/#portfolio" class="text-text-muted hover:text-accent transition-colors">Portfolio</a></li>
+        <li><a href="/#designer" class="text-text-muted hover:text-accent transition-colors">Design Yours</a></li>
+        <li><a href="/#about" class="text-text-muted hover:text-accent transition-colors">About</a></li>
+        <li><a href="/blog/" class="text-accent font-semibold">Blog</a></li>
+        <li><a href="/#contact" class="text-text-muted hover:text-accent transition-colors">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="pt-32 pb-24">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-16">
+        <p class="text-accent font-semibold tracking-[0.2em] uppercase text-sm mb-4">Insights &amp; Case Studies</p>
+        <h1 class="text-3xl sm:text-4xl font-bold mb-4 tracking-tight">Blog</h1>
+        <p class="text-text-muted text-lg max-w-2xl mx-auto">Case studies, guides, and thoughts on custom 3D printed badge holders.</p>
+      </div>
+
+      <!-- Blog posts -->
+      <div class="space-y-8">
+        <a href="/blog/clearscore-820-custom-badge-holders" class="block bg-card border border-border rounded-xl p-6 hover:border-accent/50 transition-colors">
+          <div class="flex flex-col sm:flex-row gap-6">
+            <img src="../img/holder-rotation-cs/frame_072.webp" alt="ClearScore custom badge holder" class="w-full sm:w-48 h-48 object-contain rounded-lg bg-surface" loading="lazy">
+            <div>
+              <p class="text-text-subtle text-sm mb-2">Case Study</p>
+              <h2 class="text-xl font-bold mb-2 text-text-primary">How We Delivered 820 Custom Badge Holders to ClearScore in 6 Weeks</h2>
+              <p class="text-text-muted leading-relaxed">ClearScore needed branded badge holders for their growing team. Here's how we designed, printed, and delivered 820 custom holders in just 6 weeks.</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-surface border-t border-border py-6">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 text-center text-text-subtle text-sm">
+      &copy; <span id="year"></span> Fusion Creations. All rights reserved.
+    </div>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
