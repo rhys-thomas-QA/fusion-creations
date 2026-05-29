@@ -557,6 +557,7 @@
             <input type="hidden" name="utm_term" id="utm-term">
             <input type="hidden" name="utm_content" id="utm-content">
             <input type="hidden" name="gclid" id="gclid">
+            <input type="hidden" name="project_type" id="project-type" value="custom_id_card_holders">
             <p class="hidden">
               <label>Don't fill this out: <input name="bot-field"></label>
             </p>
@@ -575,32 +576,18 @@
               <input type="text" id="company" name="company" autocomplete="organization" placeholder="Company or organisation"
                 class="glow-input w-full bg-card border border-border rounded-lg px-4 py-3 text-text-primary placeholder-text-subtle focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-shadow">
             </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-              <div>
-                <label for="project-type" class="block text-sm font-semibold mb-2">What do you need?</label>
-                <select id="project-type" name="project_type" required
-                  class="glow-input w-full bg-card border border-border rounded-lg px-4 py-3 text-text-primary focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-shadow">
-                  <option value="">Select one</option>
-                  <option value="custom_id_card_holders">Custom ID card holders</option>
-                  <option value="event_badge_holders">Event badge holders</option>
-                  <option value="staff_badge_holders">Staff badge holders</option>
-                  <option value="keyrings_or_other">Keyrings or other custom items</option>
-                  <option value="not_sure">Not sure yet</option>
-                </select>
-              </div>
-              <div>
-                <label for="quantity" class="block text-sm font-semibold mb-2">Approx. quantity</label>
-                <select id="quantity" name="quantity" required
-                  class="glow-input w-full bg-card border border-border rounded-lg px-4 py-3 text-text-primary focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-shadow">
-                  <option value="">Select range</option>
-                  <option value="under_50">Under 50</option>
-                  <option value="50_100">50 to 100</option>
-                  <option value="101_250">101 to 250</option>
-                  <option value="251_500">251 to 500</option>
-                  <option value="501_plus">501+</option>
-                  <option value="not_sure">Not sure yet</option>
-                </select>
-              </div>
+            <div>
+              <label for="quantity" class="block text-sm font-semibold mb-2">Approx. quantity</label>
+              <select id="quantity" name="quantity" required
+                class="glow-input w-full bg-card border border-border rounded-lg px-4 py-3 text-text-primary focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-shadow">
+                <option value="">Select range</option>
+                <option value="under_50">Under 50</option>
+                <option value="50_100">50 to 100</option>
+                <option value="101_250">101 to 250</option>
+                <option value="251_500">251 to 500</option>
+                <option value="501_plus">501+</option>
+                <option value="not_sure">Not sure yet</option>
+              </select>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <div>
