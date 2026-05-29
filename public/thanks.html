@@ -12,6 +12,7 @@
     window.fcConsentOptions = {
       key: 'fc_cookie_consent',
       maxAgeMs: 1000 * 60 * 60 * 24 * 180,
+      version: 2,
       denied: {
         ad_storage: 'denied',
         analytics_storage: 'denied',
@@ -29,6 +30,10 @@
       try {
         const value = JSON.parse(localStorage.getItem(window.fcConsentOptions.key) || 'null');
         if (!value || !value.status || !value.updatedAt) return null;
+        if (value.version !== window.fcConsentOptions.version) {
+          localStorage.removeItem(window.fcConsentOptions.key);
+          return null;
+        }
         if (Date.now() - value.updatedAt > window.fcConsentOptions.maxAgeMs) {
           localStorage.removeItem(window.fcConsentOptions.key);
           return null;
@@ -134,6 +139,6 @@
       </div>
     </div>
   </main>
-  <script src="js/consent.js" defer></script>
+  <script src="js/consent.js?v=20260529-1" defer></script>
 </body>
 </html>

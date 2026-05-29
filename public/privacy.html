@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Privacy & Cookies | Fusion Creations</title>
-  <meta name="description" content="Privacy and cookie information for Fusion Creations, including contact form data, Google Ads, analytics, and optional cookie choices.">
+  <meta name="description" content="Privacy and cookie information for Fusion Creations, including contact form data, Google Ads, Microsoft Clarity, analytics, and optional cookie choices.">
   <meta name="robots" content="noindex, follow">
   <link rel="canonical" href="https://fusion-creations.com/privacy.html">
 
@@ -15,6 +15,7 @@
     window.fcConsentOptions = {
       key: 'fc_cookie_consent',
       maxAgeMs: 1000 * 60 * 60 * 24 * 180,
+      version: 2,
       denied: {
         ad_storage: 'denied',
         analytics_storage: 'denied',
@@ -32,6 +33,10 @@
       try {
         const value = JSON.parse(localStorage.getItem(window.fcConsentOptions.key) || 'null');
         if (!value || !value.status || !value.updatedAt) return null;
+        if (value.version !== window.fcConsentOptions.version) {
+          localStorage.removeItem(window.fcConsentOptions.key);
+          return null;
+        }
         if (Date.now() - value.updatedAt > window.fcConsentOptions.maxAgeMs) {
           localStorage.removeItem(window.fcConsentOptions.key);
           return null;
@@ -104,9 +109,10 @@
         </section>
 
         <section>
-          <h2 class="text-2xl font-bold text-text-primary mb-3">Optional Cookies And Google Measurement</h2>
+          <h2 class="text-2xl font-bold text-text-primary mb-3">Optional Cookies, Ads, And Analytics Measurement</h2>
           <p>We use Google tag services for Google Ads, conversion measurement, and analytics-style measurement. These services can use cookies or similar storage to understand visits, quote enquiries, and advertising performance.</p>
-          <p class="mt-3">If you accept optional cookies, we may send your email address to Google tag services for Enhanced Conversions when you submit the quote form. This helps match a quote enquiry to an ad interaction. If you reject optional cookies, we keep Google advertising, analytics, user-data, and personalisation consent set to denied and do not send the quote form email into the Enhanced Conversions flow.</p>
+          <p class="mt-3">We also use Microsoft Clarity after optional cookies are accepted to understand how visitors use the site through heatmaps and session recordings. Clarity may collect interaction data such as clicks, scrolls, pages viewed, device and browser information, and approximate location. We use this to improve the quote journey and spot confusing page sections.</p>
+          <p class="mt-3">If you accept optional cookies, we may send your email address to Google tag services for Enhanced Conversions when you submit the quote form. This helps match a quote enquiry to an ad interaction. If you reject optional cookies, we keep Google advertising, analytics, user-data, and personalisation consent set to denied, do not load Microsoft Clarity, and do not send the quote form email into the Enhanced Conversions flow.</p>
         </section>
 
         <section>
@@ -138,7 +144,7 @@
     </div>
   </footer>
 
-  <script src="js/consent.js" defer></script>
+  <script src="js/consent.js?v=20260529-1" defer></script>
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
