@@ -12,6 +12,12 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'AW-18013443650');
+    gtag('event', 'generate_lead', {
+      event_category: 'engagement',
+      event_label: 'contact_form',
+      value: 1,
+      currency: 'GBP'
+    });
   </script>
 
   <link rel="icon" href="img/favicon.png" type="image/png">
@@ -19,29 +25,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            page: '#0a0a0f',
-            surface: '#111118',
-            card: '#1a1a24',
-            border: '#242430',
-            accent: '#3b82f6',
-            'accent-hover': '#60a5fa',
-            'text-primary': '#f1f5f9',
-            'text-muted': '#94a3b8',
-            'text-subtle': '#64748b',
-          },
-          fontFamily: {
-            sans: ['Inter', 'system-ui', 'sans-serif'],
-          },
-        },
-      },
-    };
-  </script>
+  <link rel="stylesheet" href="css/tailwind.css">
 </head>
 <body class="bg-page text-text-primary font-sans min-h-screen flex items-center justify-center">
   <div class="text-center px-4">
@@ -50,7 +34,7 @@
     </div>
     <h1 class="text-3xl sm:text-4xl font-bold mb-4 tracking-tight">Thanks for getting in touch!</h1>
     <p class="text-text-muted text-lg max-w-md mx-auto mb-8">I'll get back to you within 24 hours. In the meantime, feel free to have a play with the designer.</p>
-    <a href="/#designer" class="inline-block bg-accent hover:bg-accent-hover text-white font-semibold px-8 py-3 rounded-lg transition-colors">
+    <a href="/#designer" class="inline-block bg-accent hover:bg-accent-hover text-page font-semibold px-8 py-3 rounded-lg transition-colors">
       Try the Designer
     </a>
     <p class="mt-4">

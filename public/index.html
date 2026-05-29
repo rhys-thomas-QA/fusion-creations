@@ -139,29 +139,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            page: '#0a0a0f',
-            surface: '#111118',
-            card: '#1a1a24',
-            border: '#242430',
-            accent: '#3b82f6',
-            'accent-hover': '#60a5fa',
-            'text-primary': '#f1f5f9',
-            'text-muted': '#94a3b8',
-            'text-subtle': '#64748b',
-          },
-          fontFamily: {
-            sans: ['Inter', 'system-ui', 'sans-serif'],
-          },
-        },
-      },
-    };
-  </script>
+  <link rel="stylesheet" href="css/tailwind.css">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body class="bg-page text-text-primary font-sans">
@@ -224,10 +202,10 @@
           Bespoke, high-quality 3D printed ID card holders and badge holders designed and crafted for your business. Custom colours, logos, and names on every unit.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start fade-in-up" style="transition-delay: 360ms;">
-          <a href="#portfolio" class="glow-btn inline-block bg-accent hover:bg-accent-hover text-white font-semibold px-8 py-3 rounded-lg text-center">
+          <a href="#portfolio" class="glow-btn inline-block bg-accent hover:bg-accent-hover text-page font-semibold px-8 py-3 rounded-lg text-center">
             View Portfolio
           </a>
-          <a href="#contact" class="glow-btn-outline inline-block border-2 border-accent text-accent hover:bg-accent hover:text-white font-semibold px-8 py-3 rounded-lg text-center">
+          <a href="#contact" class="glow-btn-outline inline-block border-2 border-accent text-accent hover:bg-accent hover:text-page font-semibold px-8 py-3 rounded-lg text-center">
             Get in Touch
           </a>
         </div>
@@ -355,11 +333,11 @@
             <!-- Action buttons -->
             <div class="flex flex-col sm:flex-row gap-3 pt-2">
               <button id="download-preview"
-                class="glow-btn bg-accent hover:bg-accent-hover text-white font-semibold px-6 py-3 rounded-lg text-sm">
+                class="glow-btn bg-accent hover:bg-accent-hover text-page font-semibold px-6 py-3 rounded-lg text-sm">
                 <i class="fa-solid fa-download mr-2"></i>Download Preview
               </button>
               <a href="#contact" id="get-quote"
-                class="glow-btn-outline inline-block border-2 border-accent text-accent hover:bg-accent hover:text-white font-semibold px-6 py-3 rounded-lg text-sm text-center">
+                class="glow-btn-outline inline-block border-2 border-accent text-accent hover:bg-accent hover:text-page font-semibold px-6 py-3 rounded-lg text-sm text-center">
                 <i class="fa-solid fa-envelope mr-2"></i>Get a Quote
               </a>
             </div>
@@ -525,6 +503,14 @@
           <!-- Contact form -->
           <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thanks" class="space-y-5 fade-in-up" style="transition-delay: 150ms;">
             <input type="hidden" name="form-name" value="contact">
+            <input type="hidden" name="page_url" id="page-url">
+            <input type="hidden" name="referrer" id="referrer">
+            <input type="hidden" name="utm_source" id="utm-source">
+            <input type="hidden" name="utm_medium" id="utm-medium">
+            <input type="hidden" name="utm_campaign" id="utm-campaign">
+            <input type="hidden" name="utm_term" id="utm-term">
+            <input type="hidden" name="utm_content" id="utm-content">
+            <input type="hidden" name="gclid" id="gclid">
             <p class="hidden">
               <label>Don't fill this out: <input name="bot-field"></label>
             </p>
@@ -544,7 +530,7 @@
                 class="glow-input w-full bg-card border border-border rounded-lg px-4 py-3 text-text-primary placeholder-text-subtle focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-shadow resize-y"></textarea>
             </div>
             <button type="submit"
-              class="glow-btn w-full sm:w-auto bg-accent hover:bg-accent-hover text-white font-semibold px-8 py-3 rounded-lg">
+              class="glow-btn w-full sm:w-auto bg-accent hover:bg-accent-hover text-page font-semibold px-8 py-3 rounded-lg">
               Send Message
             </button>
           </form>
@@ -569,14 +555,36 @@
   </div>
 
   <script src="js/turntable.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
-  <script src="js/designer.js" defer></script>
   <script>
     (() => {
       // --- Year ---
       document.getElementById('year').textContent = new Date().getFullYear();
+
+      // --- Lead attribution ---
+      const attributionFields = [
+        'utm_source',
+        'utm_medium',
+        'utm_campaign',
+        'utm_term',
+        'utm_content',
+        'gclid',
+      ];
+      const params = new URLSearchParams(window.location.search);
+
+      attributionFields.forEach((name) => {
+        const storageKey = `fc_${name}`;
+        const value = params.get(name) || sessionStorage.getItem(storageKey) || '';
+        if (params.get(name)) sessionStorage.setItem(storageKey, params.get(name));
+
+        const input = document.getElementById(name.replace(/_/g, '-'));
+        if (input) input.value = value;
+      });
+
+      const pageUrl = document.getElementById('page-url');
+      const referrer = document.getElementById('referrer');
+      if (pageUrl) pageUrl.value = window.location.href;
+      if (referrer) referrer.value = document.referrer || sessionStorage.getItem('fc_referrer') || '';
+      if (document.referrer) sessionStorage.setItem('fc_referrer', document.referrer);
 
       // --- Navbar scroll effect ---
       const navbar = document.getElementById('navbar');
@@ -742,6 +750,66 @@
           card.addEventListener('mouseleave', () => {
             card.style.transform = '';
           });
+        });
+      }
+
+      // --- Lazy-load the 3D designer dependencies ---
+      const designerSection = document.getElementById('designer');
+      let designerLoadPromise = null;
+
+      function loadScript(src) {
+        return new Promise((resolve, reject) => {
+          const existing = document.querySelector(`script[src="${src}"]`);
+          if (existing) {
+            if (existing.dataset.loaded === 'true') {
+              resolve();
+              return;
+            }
+            existing.addEventListener('load', resolve, { once: true });
+            existing.addEventListener('error', reject, { once: true });
+            return;
+          }
+
+          const script = document.createElement('script');
+          script.src = src;
+          script.async = false;
+          script.onload = () => {
+            script.dataset.loaded = 'true';
+            resolve();
+          };
+          script.onerror = reject;
+          document.body.appendChild(script);
+        });
+      }
+
+      function loadDesigner() {
+        if (!designerLoadPromise) {
+          designerLoadPromise = loadScript('https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js')
+            .then(() => loadScript('https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js'))
+            .then(() => loadScript('https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js'))
+            .then(() => loadScript('js/designer.js'))
+            .catch((error) => {
+              console.error('Designer failed to load', error);
+            });
+        }
+        return designerLoadPromise;
+      }
+
+      if (designerSection) {
+        if ('IntersectionObserver' in window) {
+          const designerObserver = new IntersectionObserver((entries) => {
+            if (entries.some(entry => entry.isIntersecting)) {
+              loadDesigner();
+              designerObserver.disconnect();
+            }
+          }, { rootMargin: '600px 0px' });
+          designerObserver.observe(designerSection);
+        } else {
+          loadDesigner();
+        }
+
+        document.querySelectorAll('a[href="#designer"], a[href="/#designer"]').forEach(link => {
+          link.addEventListener('click', loadDesigner, { once: true });
         });
       }
     })();

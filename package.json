@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "build:css": "npx tailwindcss@3.4.17 -i ./tailwind.input.css -o ./public/css/tailwind.css --minify"
+  },
+  "devDependencies": {
+    "tailwindcss": "3.4.17"
+  }
+}
