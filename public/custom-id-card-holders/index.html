@@ -184,7 +184,7 @@
         <li><a href="/#portfolio" class="text-text-muted hover:text-accent transition-colors">Portfolio</a></li>
         <li><a href="/#designer" class="text-text-muted hover:text-accent transition-colors">Design Yours</a></li>
         <li><a href="/blog/" class="text-text-muted hover:text-accent transition-colors">Blog</a></li>
-        <li><a href="/#contact" class="text-text-muted hover:text-accent transition-colors">Contact</a></li>
+        <li><a href="#quote" class="text-text-muted hover:text-accent transition-colors">Quote</a></li>
       </ul>
     </nav>
   </header>
@@ -208,7 +208,7 @@
           Bespoke ID card holders made for your brand, colours, logo, and people. Built for staff badges, conferences, onboarding, events, and corporate teams across the UK.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-          <a href="/#contact" class="glow-btn inline-block bg-accent hover:bg-accent-hover text-page font-semibold px-8 py-3 rounded-lg text-center">Request a Quote</a>
+          <a href="#quote" class="glow-btn inline-block bg-accent hover:bg-accent-hover text-page font-semibold px-8 py-3 rounded-lg text-center">Request a Quote</a>
           <a href="/#designer" class="glow-btn-outline inline-block border-2 border-accent text-accent hover:bg-accent hover:text-page font-semibold px-8 py-3 rounded-lg text-center">Try the Designer</a>
         </div>
       </div>
@@ -274,7 +274,7 @@
             <p class="text-text-muted text-lg leading-relaxed mb-8">
               These holders work best when the badge is part of the experience: a launch event, conference, team day, office rollout, onboarding pack, or branded visitor system.
             </p>
-            <a href="/#contact" class="inline-block bg-accent hover:bg-accent-hover text-page font-semibold px-8 py-3 rounded-lg transition-colors">Start a Quote</a>
+            <a href="#quote" class="inline-block bg-accent hover:bg-accent-hover text-page font-semibold px-8 py-3 rounded-lg transition-colors">Start a Quote</a>
           </div>
 
           <div class="grid sm:grid-cols-2 gap-4">
@@ -410,12 +410,112 @@
       </div>
     </section>
 
-    <section class="bg-surface py-20 sm:py-28">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-        <p class="text-accent font-semibold tracking-[0.2em] uppercase text-sm mb-4">Ready To Start?</p>
-        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight mb-6">Need custom ID card holders for your team?</h2>
-        <p class="text-text-muted text-lg leading-relaxed max-w-2xl mx-auto mb-8">Tell me the quantity, deadline, brand colours, and whether each holder needs individual names. I will come back with the next steps and a quote.</p>
-        <a href="/#contact" class="glow-btn inline-block bg-accent hover:bg-accent-hover text-page font-semibold px-8 py-3 rounded-lg">Request a Quote</a>
+    <section id="quote" class="bg-surface py-20 sm:py-28">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="text-center max-w-3xl mx-auto mb-14">
+          <p class="text-accent font-semibold tracking-[0.2em] uppercase text-sm mb-4">Ready To Start?</p>
+          <h2 class="text-3xl sm:text-4xl font-bold tracking-tight mb-6">Request a custom ID holder quote</h2>
+          <p class="text-text-muted text-lg leading-relaxed">Tell me the quantity, deadline, brand colours, and whether each holder needs individual names. I will come back with the next steps and a quote.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+          <div>
+            <div class="flex items-start gap-4 mb-6">
+              <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0 mt-1">
+                <i class="fa-solid fa-envelope text-accent"></i>
+              </div>
+              <div>
+                <h3 class="font-semibold text-lg mb-1">Prefer email?</h3>
+                <a href="mailto:contact.fusioncreations@gmail.com" class="text-accent hover:text-accent-hover transition-colors break-all">
+                  contact.fusioncreations@gmail.com
+                </a>
+              </div>
+            </div>
+            <p class="text-text-muted leading-relaxed mb-6">
+              A rough brief is enough to start. Useful details include quantity, event date, logo files, brand colours, whether each holder needs a different name, and where the finished order needs shipping.
+            </p>
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div class="bg-card border border-border rounded-lg p-5">
+                <p class="text-2xl font-bold text-text-primary mb-1">24h</p>
+                <p class="text-text-muted text-sm">Typical first reply</p>
+              </div>
+              <div class="bg-card border border-border rounded-lg p-5">
+                <p class="text-2xl font-bold text-text-primary mb-1">50+</p>
+                <p class="text-text-muted text-sm">Typical order size</p>
+              </div>
+            </div>
+          </div>
+
+          <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thanks" class="space-y-5">
+            <input type="hidden" name="form-name" value="contact">
+            <input type="hidden" name="page_url" id="page-url">
+            <input type="hidden" name="referrer" id="referrer">
+            <input type="hidden" name="utm_source" id="utm-source">
+            <input type="hidden" name="utm_medium" id="utm-medium">
+            <input type="hidden" name="utm_campaign" id="utm-campaign">
+            <input type="hidden" name="utm_term" id="utm-term">
+            <input type="hidden" name="utm_content" id="utm-content">
+            <input type="hidden" name="gclid" id="gclid">
+            <input type="hidden" name="project_type" id="project-type" value="custom_id_card_holders">
+            <p class="hidden">
+              <label>Don't fill this out: <input name="bot-field"></label>
+            </p>
+            <div>
+              <label for="name" class="block text-sm font-semibold mb-2">Name</label>
+              <input type="text" id="name" name="name" autocomplete="name" required placeholder="Your name"
+                class="glow-input w-full bg-card border border-border rounded-lg px-4 py-3 text-text-primary placeholder-text-subtle focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-shadow">
+            </div>
+            <div>
+              <label for="email" class="block text-sm font-semibold mb-2">Email</label>
+              <input type="email" id="email" name="email" autocomplete="email" required placeholder="you@example.com"
+                class="glow-input w-full bg-card border border-border rounded-lg px-4 py-3 text-text-primary placeholder-text-subtle focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-shadow">
+            </div>
+            <div>
+              <label for="company" class="block text-sm font-semibold mb-2">Company <span class="text-text-subtle font-normal">(optional)</span></label>
+              <input type="text" id="company" name="company" autocomplete="organization" placeholder="Company or organisation"
+                class="glow-input w-full bg-card border border-border rounded-lg px-4 py-3 text-text-primary placeholder-text-subtle focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-shadow">
+            </div>
+            <div>
+              <label for="quantity" class="block text-sm font-semibold mb-2">Approx. quantity</label>
+              <select id="quantity" name="quantity" required
+                class="glow-input w-full bg-card border border-border rounded-lg px-4 py-3 text-text-primary focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-shadow">
+                <option value="">Select range</option>
+                <option value="under_50">Under 50</option>
+                <option value="50_100">50 to 100</option>
+                <option value="101_250">101 to 250</option>
+                <option value="251_500">251 to 500</option>
+                <option value="501_plus">501+</option>
+                <option value="not_sure">Not sure yet</option>
+              </select>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div>
+                <label for="deadline" class="block text-sm font-semibold mb-2">Deadline / event date <span class="text-text-subtle font-normal">(optional)</span></label>
+                <input type="date" id="deadline" name="deadline"
+                  class="glow-input w-full bg-card border border-border rounded-lg px-4 py-3 text-text-primary focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-shadow">
+              </div>
+              <div>
+                <label for="personalisation" class="block text-sm font-semibold mb-2">Individual names?</label>
+                <select id="personalisation" name="individual_names" required
+                  class="glow-input w-full bg-card border border-border rounded-lg px-4 py-3 text-text-primary focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-shadow">
+                  <option value="">Select one</option>
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
+                  <option value="not_sure">Not sure yet</option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <label for="message" class="block text-sm font-semibold mb-2">Project details</label>
+              <textarea id="message" name="message" required rows="5" placeholder="Tell me about your colours, logo, event, deadline, or anything else that matters..."
+                class="glow-input w-full bg-card border border-border rounded-lg px-4 py-3 text-text-primary placeholder-text-subtle focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-shadow resize-y"></textarea>
+            </div>
+            <button type="submit"
+              class="glow-btn w-full sm:w-auto bg-accent hover:bg-accent-hover text-page font-semibold px-8 py-3 rounded-lg">
+              Request Quote
+            </button>
+          </form>
+        </div>
       </div>
     </section>
   </main>
@@ -429,6 +529,7 @@
   </footer>
 
   <script src="../js/consent.js" defer></script>
+  <script src="../js/lead-form.js?v=20260529-1" defer></script>
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>

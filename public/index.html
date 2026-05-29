@@ -656,55 +656,11 @@
 
   <script src="js/turntable.js" defer></script>
   <script src="js/consent.js" defer></script>
+  <script src="js/lead-form.js?v=20260529-1" defer></script>
   <script>
     (() => {
       // --- Year ---
       document.getElementById('year').textContent = new Date().getFullYear();
-
-      // --- Lead attribution ---
-      const attributionFields = [
-        'utm_source',
-        'utm_medium',
-        'utm_campaign',
-        'utm_term',
-        'utm_content',
-        'gclid',
-      ];
-      const params = new URLSearchParams(window.location.search);
-
-      attributionFields.forEach((name) => {
-        const storageKey = `fc_${name}`;
-        const value = params.get(name) || sessionStorage.getItem(storageKey) || '';
-        if (params.get(name)) sessionStorage.setItem(storageKey, params.get(name));
-
-        const input = document.getElementById(name.replace(/_/g, '-'));
-        if (input) input.value = value;
-      });
-
-      const pageUrl = document.getElementById('page-url');
-      const referrer = document.getElementById('referrer');
-      if (pageUrl) pageUrl.value = window.location.href;
-      if (referrer) referrer.value = document.referrer || sessionStorage.getItem('fc_referrer') || '';
-      if (document.referrer) sessionStorage.setItem('fc_referrer', document.referrer);
-
-      // --- Enhanced conversions ---
-      const contactForm = document.querySelector('form[name="contact"]');
-      if (contactForm) {
-        contactForm.addEventListener('submit', () => {
-          const email = contactForm.querySelector('input[name="email"]')?.value.trim().toLowerCase();
-          if (!email || !window.fcHasMarketingConsent()) return;
-
-          const userData = { email };
-          window.fcEnhancedConversionEmail = email;
-          window.fcEnhancedConversionUserData = userData;
-          gtag('set', 'user_data', userData);
-          try {
-            sessionStorage.setItem('fc_enhanced_conversion_user_data', JSON.stringify(userData));
-          } catch (error) {
-            // Keep the form submission working even if session storage is unavailable.
-          }
-        });
-      }
 
       // --- Navbar scroll effect ---
       const navbar = document.getElementById('navbar');
