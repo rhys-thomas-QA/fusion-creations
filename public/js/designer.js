@@ -428,6 +428,12 @@
   quoteBtn.addEventListener('click', (e) => {
     e.preventDefault();
     const msg = document.getElementById('message');
+    const projectType = document.getElementById('project-type');
+    const personalisation = document.getElementById('personalisation');
+
+    if (projectType) projectType.value = 'custom_id_card_holders';
+    if (personalisation) personalisation.value = 'yes';
+
     if (msg) {
       const text = [primaryText, secondaryText].filter(Boolean).join(' ');
       const logoNote = logoImage ? 'Logo attached in preview' : 'No logo uploaded';
