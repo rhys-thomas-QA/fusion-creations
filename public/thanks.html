@@ -11,6 +11,16 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
+
+    try {
+      const userDataKey = 'fc_enhanced_conversion_user_data';
+      const userData = JSON.parse(sessionStorage.getItem(userDataKey) || '{}');
+      if (userData.email) {
+        gtag('set', 'user_data', userData);
+      }
+      sessionStorage.removeItem(userDataKey);
+    } catch (error) {}
+
     gtag('config', 'AW-18013443650');
     gtag('event', 'generate_lead', {
       event_category: 'engagement',
