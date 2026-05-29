@@ -5,24 +5,69 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Thanks | Fusion Creations</title>
   <meta name="robots" content="noindex, nofollow">
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18013443650"></script>
+  <!-- Google tag (gtag.js) with Consent Mode v2 -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    try {
-      const userDataKey = 'fc_enhanced_conversion_user_data';
-      const userData = JSON.parse(sessionStorage.getItem(userDataKey) || '{}');
-      if (userData.email) {
-        window.fcEnhancedConversionEmail = userData.email;
-        window.fcEnhancedConversionUserData = userData;
-        gtag('set', 'user_data', userData);
+    window.fcConsentOptions = {
+      key: 'fc_cookie_consent',
+      maxAgeMs: 1000 * 60 * 60 * 24 * 180,
+      denied: {
+        ad_storage: 'denied',
+        analytics_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied'
+      },
+      granted: {
+        ad_storage: 'granted',
+        analytics_storage: 'granted',
+        ad_user_data: 'granted',
+        ad_personalization: 'granted'
       }
-      sessionStorage.removeItem(userDataKey);
-    } catch (error) {}
+    };
+    window.fcReadCookieConsent = function () {
+      try {
+        const value = JSON.parse(localStorage.getItem(window.fcConsentOptions.key) || 'null');
+        if (!value || !value.status || !value.updatedAt) return null;
+        if (Date.now() - value.updatedAt > window.fcConsentOptions.maxAgeMs) {
+          localStorage.removeItem(window.fcConsentOptions.key);
+          return null;
+        }
+        return value.status;
+      } catch (error) {
+        return null;
+      }
+    };
+    window.fcHasMarketingConsent = function () {
+      return window.fcReadCookieConsent() === 'accepted';
+    };
+    gtag('consent', 'default', {
+      ad_storage: 'denied',
+      analytics_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      wait_for_update: 500
+    });
+    if (window.fcHasMarketingConsent()) {
+      gtag('consent', 'update', window.fcConsentOptions.granted);
+    }
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18013443650"></script>
+  <script>
+    if (window.fcHasMarketingConsent()) {
+      try {
+        const userDataKey = 'fc_enhanced_conversion_user_data';
+        const userData = JSON.parse(sessionStorage.getItem(userDataKey) || '{}');
+        if (userData.email) {
+          window.fcEnhancedConversionEmail = userData.email;
+          window.fcEnhancedConversionUserData = userData;
+          gtag('set', 'user_data', userData);
+        }
+        sessionStorage.removeItem(userDataKey);
+      } catch (error) {}
+    }
 
+    gtag('js', new Date());
     gtag('config', 'AW-18013443650');
     gtag('event', 'generate_lead', {
       event_category: 'engagement',
@@ -38,6 +83,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="css/tailwind.css">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body class="bg-page text-text-primary font-sans min-h-screen flex items-center justify-center">
   <div class="text-center px-4">
@@ -52,6 +98,10 @@
     <p class="mt-4">
       <a href="/" class="text-text-subtle hover:text-accent transition-colors text-sm">Back to home</a>
     </p>
+    <p class="mt-2">
+      <a href="/privacy.html" class="text-text-subtle hover:text-accent transition-colors text-sm">Privacy &amp; cookies</a>
+    </p>
   </div>
+  <script src="js/consent.js" defer></script>
 </body>
 </html>

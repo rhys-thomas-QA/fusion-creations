@@ -12,11 +12,55 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://fusion-creations.com/blog/">
   <meta property="og:image" content="https://fusion-creations.com/img/hero-image.webp">
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18013443650"></script>
+  <!-- Google tag (gtag.js) with Consent Mode v2 -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
+    window.fcConsentOptions = {
+      key: 'fc_cookie_consent',
+      maxAgeMs: 1000 * 60 * 60 * 24 * 180,
+      denied: {
+        ad_storage: 'denied',
+        analytics_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied'
+      },
+      granted: {
+        ad_storage: 'granted',
+        analytics_storage: 'granted',
+        ad_user_data: 'granted',
+        ad_personalization: 'granted'
+      }
+    };
+    window.fcReadCookieConsent = function () {
+      try {
+        const value = JSON.parse(localStorage.getItem(window.fcConsentOptions.key) || 'null');
+        if (!value || !value.status || !value.updatedAt) return null;
+        if (Date.now() - value.updatedAt > window.fcConsentOptions.maxAgeMs) {
+          localStorage.removeItem(window.fcConsentOptions.key);
+          return null;
+        }
+        return value.status;
+      } catch (error) {
+        return null;
+      }
+    };
+    window.fcHasMarketingConsent = function () {
+      return window.fcReadCookieConsent() === 'accepted';
+    };
+    gtag('consent', 'default', {
+      ad_storage: 'denied',
+      analytics_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      wait_for_update: 500
+    });
+    if (window.fcHasMarketingConsent()) {
+      gtag('consent', 'update', window.fcConsentOptions.granted);
+    }
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18013443650"></script>
+  <script>
     gtag('js', new Date());
     gtag('config', 'AW-18013443650');
   </script>
@@ -85,9 +129,12 @@
   <footer class="bg-surface border-t border-border py-6">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 text-center text-text-subtle text-sm">
       &copy; <span id="year"></span> Fusion Creations. All rights reserved.
+      <span class="mx-2">|</span>
+      <a href="/privacy.html" class="hover:text-accent transition-colors">Privacy &amp; cookies</a>
     </div>
   </footer>
 
+  <script src="../js/consent.js" defer></script>
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
