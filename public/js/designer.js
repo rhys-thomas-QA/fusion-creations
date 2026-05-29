@@ -9,8 +9,8 @@
   let logoImage = null;
   let logoTrimBounds = null;
   let removeWhiteBg = true;
-  let logoScale = 1.0;    // 0.3 – 2.0
-  let fontScale = 1.0;    // 0.3 – 2.0
+  let logoScale = 1.0;    // 0.3 to 2.0
+  let fontScale = 1.0;    // 0.3 to 2.0
 
   // =============================================
   // DOM REFS
