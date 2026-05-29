@@ -82,26 +82,58 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="css/tailwind.css">
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/tailwind.css?v=20260529-2">
+  <link rel="stylesheet" href="css/styles.css?v=20260529-2">
 </head>
-<body class="bg-page text-text-primary font-sans min-h-screen flex items-center justify-center">
-  <div class="text-center px-4">
-    <div class="mb-8">
-      <i class="fa-solid fa-circle-check text-accent text-6xl"></i>
+<body class="bg-page text-text-primary font-sans min-h-screen">
+  <main class="min-h-screen flex items-center justify-center px-4 py-16">
+    <div class="max-w-3xl mx-auto text-center">
+      <div class="mb-8">
+        <i class="fa-solid fa-circle-check text-accent text-6xl"></i>
+      </div>
+      <p class="text-accent font-semibold tracking-[0.2em] uppercase text-sm mb-4">Quote Request Sent</p>
+      <h1 class="text-3xl sm:text-5xl font-bold mb-5 tracking-tight">Thanks, I’ll take a look.</h1>
+      <p class="text-text-muted text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
+        I typically reply within 24 hours. If you already have a logo, brand colours, name list, or event deadline, sending those through now will help me price the job faster.
+      </p>
+
+      <div class="grid sm:grid-cols-3 gap-4 text-left mb-10">
+        <div class="bg-card border border-border rounded-lg p-5">
+          <i class="fa-solid fa-envelope-open-text text-accent text-xl mb-4"></i>
+          <h2 class="font-semibold mb-2">1. I’ll review it</h2>
+          <p class="text-text-muted text-sm leading-relaxed">I’ll check the quantity, deadline, and personalisation details you sent.</p>
+        </div>
+        <div class="bg-card border border-border rounded-lg p-5">
+          <i class="fa-solid fa-palette text-accent text-xl mb-4"></i>
+          <h2 class="font-semibold mb-2">2. Send brand files</h2>
+          <p class="text-text-muted text-sm leading-relaxed">A logo file, colour references, or brand guide makes the design preview easier.</p>
+        </div>
+        <div class="bg-card border border-border rounded-lg p-5">
+          <i class="fa-solid fa-calculator text-accent text-xl mb-4"></i>
+          <h2 class="font-semibold mb-2">3. I’ll quote</h2>
+          <p class="text-text-muted text-sm leading-relaxed">You’ll get next steps, timings, and pricing based on the project details.</p>
+        </div>
+      </div>
+
+      <div class="flex flex-col sm:flex-row justify-center gap-4">
+        <a href="mailto:contact.fusioncreations@gmail.com?subject=Logo%20and%20brand%20files%20for%20quote" class="inline-block bg-accent hover:bg-accent-hover text-page font-semibold px-8 py-3 rounded-lg transition-colors">
+          Email Logo or Brand Files
+        </a>
+        <a href="/#designer" class="inline-block border-2 border-accent text-accent hover:bg-accent hover:text-page font-semibold px-8 py-3 rounded-lg transition-colors">
+          Try the Designer
+        </a>
+        <a href="/custom-id-card-holders/" class="inline-block border border-border text-text-muted hover:text-accent hover:border-accent/60 font-semibold px-8 py-3 rounded-lg transition-colors">
+          View ID Card Holders
+        </a>
+      </div>
+
+      <div class="mt-8 text-sm text-text-subtle">
+        <a href="/" class="hover:text-accent transition-colors">Back to home</a>
+        <span class="mx-2">|</span>
+        <a href="/privacy.html" class="hover:text-accent transition-colors">Privacy &amp; cookies</a>
+      </div>
     </div>
-    <h1 class="text-3xl sm:text-4xl font-bold mb-4 tracking-tight">Thanks for getting in touch!</h1>
-    <p class="text-text-muted text-lg max-w-md mx-auto mb-8">I'll get back to you within 24 hours. In the meantime, feel free to have a play with the designer.</p>
-    <a href="/#designer" class="inline-block bg-accent hover:bg-accent-hover text-page font-semibold px-8 py-3 rounded-lg transition-colors">
-      Try the Designer
-    </a>
-    <p class="mt-4">
-      <a href="/" class="text-text-subtle hover:text-accent transition-colors text-sm">Back to home</a>
-    </p>
-    <p class="mt-2">
-      <a href="/privacy.html" class="text-text-subtle hover:text-accent transition-colors text-sm">Privacy &amp; cookies</a>
-    </p>
-  </div>
+  </main>
   <script src="js/consent.js" defer></script>
 </body>
 </html>
