@@ -16,6 +16,8 @@
       const userDataKey = 'fc_enhanced_conversion_user_data';
       const userData = JSON.parse(sessionStorage.getItem(userDataKey) || '{}');
       if (userData.email) {
+        window.fcEnhancedConversionEmail = userData.email;
+        window.fcEnhancedConversionUserData = userData;
         gtag('set', 'user_data', userData);
       }
       sessionStorage.removeItem(userDataKey);

@@ -594,6 +594,8 @@
           if (!email) return;
 
           const userData = { email };
+          window.fcEnhancedConversionEmail = email;
+          window.fcEnhancedConversionUserData = userData;
           gtag('set', 'user_data', userData);
           try {
             sessionStorage.setItem('fc_enhanced_conversion_user_data', JSON.stringify(userData));
