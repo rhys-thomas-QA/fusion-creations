@@ -1,5 +1,5 @@
 (() => {
-  const forms = document.querySelectorAll('form[name="contact"]');
+  const forms = document.querySelectorAll('form[name="contact"], form[name="production-details"]');
   if (!forms.length) return;
 
   const attributionFields = [

@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Production Details | Fusion Creations</title>
+  <meta name="description" content="A follow-up form for Fusion Creations customers to send production details for custom ID card holder orders.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="canonical" href="https://fusion-creations.com/production-details/">
+
+  <!-- Google tag (gtag.js) with Consent Mode v2 -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    window.fcConsentOptions = {
+      key: 'fc_cookie_consent',
+      maxAgeMs: 1000 * 60 * 60 * 24 * 180,
+      version: 2,
+      denied: {
+        ad_storage: 'denied',
+        analytics_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied'
+      },
+      granted: {
+        ad_storage: 'granted',
+        analytics_storage: 'granted',
+        ad_user_data: 'granted',
+        ad_personalization: 'granted'
+      }
+    };
+    window.fcReadCookieConsent = function () {
+      try {
+        const value = JSON.parse(localStorage.getItem(window.fcConsentOptions.key) || 'null');
+        if (!value || !value.status || !value.updatedAt) return null;
+        if (value.version !== window.fcConsentOptions.version) {
+          localStorage.removeItem(window.fcConsentOptions.key);
+          return null;
+        }
+        if (Date.now() - value.updatedAt > window.fcConsentOptions.maxAgeMs) {
+          localStorage.removeItem(window.fcConsentOptions.key);
+          return null;
+        }
+        return value.status;
+      } catch (error) {
+        return null;
+      }
+    };
+    window.fcHasMarketingConsent = function () {
+      return window.fcReadCookieConsent() === 'accepted';
+    };
+    gtag('consent', 'default', {
+      ad_storage: 'denied',
+      analytics_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      wait_for_update: 500
+    });
+    if (window.fcHasMarketingConsent()) {
+      gtag('consent', 'update', window.fcConsentOptions.granted);
+    }
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18013443650"></script>
+  <script>
+    gtag('js', new Date());
+    gtag('config', 'AW-18013443650');
+  </script>
+
+  <link rel="icon" href="../img/favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../css/tailwind.css?v=20260530-1">
+  <link rel="stylesheet" href="../css/styles.css?v=20260530-1">
+</head>
+<body class="bg-page text-text-primary font-sans">
+  <header class="fixed top-0 left-0 w-full z-50 bg-surface/80 backdrop-blur-lg nav-scrolled">
+    <nav class="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
+      <a href="/" class="text-xl font-bold tracking-tight">
+        <span class="text-accent">Fusion</span> Creations
+      </a>
+      <ul class="hidden md:flex items-center gap-6 text-sm font-semibold">
+        <li><a href="/" class="text-text-muted hover:text-accent transition-colors">Home</a></li>
+        <li><a href="/custom-id-card-holders/" class="text-text-muted hover:text-accent transition-colors">ID Card Holders</a></li>
+        <li><a href="mailto:contact.fusioncreations@gmail.com" class="text-text-muted hover:text-accent transition-colors">Email</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="pt-24">
+    <section class="py-12 sm:py-16">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="grid lg:grid-cols-[1.1fr_0.9fr] gap-10 items-center">
+          <div>
+            <p class="text-accent font-semibold tracking-[0.2em] uppercase text-sm mb-5">Follow-up Form</p>
+            <h1 class="text-3xl sm:text-5xl font-extrabold leading-tight tracking-tight mb-6">
+              Production details for your ID card holders
+            </h1>
+            <p class="text-text-muted text-lg leading-relaxed max-w-2xl">
+              Use this page after we have spoken. It gives me the practical details I need to prepare your design proof and production files.
+            </p>
+          </div>
+          <div class="relative min-h-[280px] rounded-lg overflow-hidden border border-border bg-card">
+            <picture>
+              <source srcset="../img/hero-image.webp" type="image/webp">
+              <img src="../img/hero-image.jpg" alt="Custom 3D printed ID card holders" class="absolute inset-0 w-full h-full object-cover" width="1920" height="893">
+            </picture>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-surface border-y border-border py-8">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="grid md:grid-cols-4 gap-5">
+          <div>
+            <p class="font-semibold mb-2">Logo file</p>
+            <p class="text-text-muted text-sm leading-relaxed">SVG, PDF, PNG, or JPG is fine.</p>
+          </div>
+          <div>
+            <p class="font-semibold mb-2">Name list</p>
+            <p class="text-text-muted text-sm leading-relaxed">CSV or spreadsheet if each holder is personalised.</p>
+          </div>
+          <div>
+            <p class="font-semibold mb-2">Colours</p>
+            <p class="text-text-muted text-sm leading-relaxed">Holder body colour, plus logo and name colour.</p>
+          </div>
+          <div>
+            <p class="font-semibold mb-2">Deadline</p>
+            <p class="text-text-muted text-sm leading-relaxed">Event date or the latest date you need delivery.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-12 sm:py-16">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6">
+        <form name="production-details" method="POST" data-netlify="true" netlify-honeypot="bot-field" enctype="multipart/form-data" action="/production-details/received/" class="space-y-6">
+          <input type="hidden" name="form-name" value="production-details">
+          <input type="hidden" name="page_url">
+          <input type="hidden" name="referrer">
+          <input type="hidden" name="utm_source">
+          <input type="hidden" name="utm_medium">
+          <input type="hidden" name="utm_campaign">
+          <input type="hidden" name="utm_term">
+          <input type="hidden" name="utm_content">
+          <input type="hidden" name="gclid">
+          <input type="hidden" name="project_type" value="custom_id_card_holders_production_details">
+          <input type="hidden" name="form_stage" value="production_details">
+          <p class="hidden">
+            <label>Don't fill this out: <input name="bot-field"></label>
+          </p>
+
+          <section class="bg-card border border-border rounded-lg p-6 sm:p-8">
+            <div class="flex items-start gap-4 mb-6">
+              <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0">
+                <i class="fa-solid fa-user text-accent"></i>
+              </div>
+              <div>
+                <h2 class="text-xl font-bold">Your details</h2>
+                <p class="text-text-muted text-sm mt-1">So I can match this to the quote or email thread.</p>
+              </div>
+            </div>
+            <div class="grid sm:grid-cols-2 gap-5">
+              <div>
+                <label for="production-name" class="block text-sm font-semibold mb-2">Name</label>
+                <input type="text" id="production-name" name="name" autocomplete="name" required
+                  class="glow-input w-full bg-card border border-border rounded-lg px-4 py-3 text-text-primary placeholder-text-subtle focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-shadow">
+              </div>
+              <div>
+                <label for="production-email" class="block text-sm font-semibold mb-2">Email</label>
+                <input type="email" id="production-email" name="email" autocomplete="email" required
+                  class="glow-input w-full bg-card border border-border rounded-lg px-4 py-3 text-text-primary placeholder-text-subtle focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-shadow">
+              </div>
+              <div>
+                <label for="production-company" class="block text-sm font-semibold mb-2">Company <span class="text-text-subtle font-normal">(optional)</span></label>
+                <input type="text" id="production-company" name="company" autocomplete="organization"
+                  class="glow-input w-full bg-card border border-border rounded-lg px-4 py-3 text-text-primary placeholder-text-subtle focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-shadow">
+              </div>
+              <div>
+                <label for="quote-reference" class="block text-sm font-semibold mb-2">Quote or project reference <span class="text-text-subtle font-normal">(optional)</span></label>
+                <input type="text" id="quote-reference" name="quote_reference" placeholder="If you have one"
+                  class="glow-input w-full bg-card border border-border rounded-lg px-4 py-3 text-text-primary placeholder-text-subtle focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-shadow">
+              </div>
+            </div>
+          </section>
+
+          <section class="bg-card border border-border rounded-lg p-6 sm:p-8">
+            <div class="flex items-start gap-4 mb-6">
+              <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0">
+                <i class="fa-solid fa-list-check text-accent"></i>
+              </div>
+              <div>
+                <h2 class="text-xl font-bold">Order details</h2>
+                <p class="text-text-muted text-sm mt-1">A rough answer is fine if the final details are still moving.</p>
+              </div>
+            </div>
+            <div class="grid sm:grid-cols-2 gap-5">
+              <div>
+                <label for="confirmed-quantity" class="block text-sm font-semibold mb-2">Confirmed or expected quantity</label>
+                <input type="number" id="confirmed-quantity" name="confirmed_quantity" min="1" step="1" required placeholder="For example, 120"
+                  class="glow-input w-full bg-card border border-border rounded-lg px-4 py-3 text-text-primary placeholder-text-subtle focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-shadow">
+              </div>
+              <div>
+                <label for="production-deadline" class="block text-sm font-semibold mb-2">Deadline or event date <span class="text-text-subtle font-normal">(optional)</span></label>
+                <input type="date" id="production-deadline" name="deadline"
+                  class="glow-input w-full bg-card border border-border rounded-lg px-4 py-3 text-text-primary focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-shadow">
+              </div>
+              <div>
+                <label for="body-colour" class="block text-sm font-semibold mb-2">Holder body colour</label>
+                <input type="text" id="body-colour" name="body_colour" required placeholder="For example, black"
+                  class="glow-input w-full bg-card border border-border rounded-lg px-4 py-3 text-text-primary placeholder-text-subtle focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-shadow">
+              </div>
+              <div>
+                <label for="details-colour" class="block text-sm font-semibold mb-2">Logo and name colour</label>
+                <input type="text" id="details-colour" name="details_colour" required placeholder="For example, white"
+                  class="glow-input w-full bg-card border border-border rounded-lg px-4 py-3 text-text-primary placeholder-text-subtle focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-shadow">
+              </div>
+            </div>
+            <div class="mt-5">
+              <label for="design-notes" class="block text-sm font-semibold mb-2">Design notes <span class="text-text-subtle font-normal">(optional)</span></label>
+              <textarea id="design-notes" name="design_notes" rows="4" placeholder="Anything you want me to know before I prepare the proof."
+                class="glow-input w-full bg-card border border-border rounded-lg px-4 py-3 text-text-primary placeholder-text-subtle focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-shadow resize-y"></textarea>
+            </div>
+          </section>
+
+          <section class="bg-card border border-border rounded-lg p-6 sm:p-8">
+            <div class="flex items-start gap-4 mb-6">
+              <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0">
+                <i class="fa-solid fa-file-arrow-up text-accent"></i>
+              </div>
+              <div>
+                <h2 class="text-xl font-bold">Files</h2>
+                <p class="text-text-muted text-sm mt-1">If a file is too large for this form, email it to me instead.</p>
+              </div>
+            </div>
+            <div class="grid sm:grid-cols-2 gap-5">
+              <div>
+                <label for="logo-file" class="block text-sm font-semibold mb-2">Logo or artwork file <span class="text-text-subtle font-normal">(optional)</span></label>
+                <input type="file" id="logo-file" name="logo_file" accept=".svg,.pdf,.png,.jpg,.jpeg"
+                  class="glow-input block w-full bg-card border border-border rounded-lg px-4 py-3 text-text-muted file:mr-4 file:rounded-md file:border-0 file:bg-accent file:px-4 file:py-2 file:text-sm file:font-semibold file:text-page hover:file:bg-accent-hover focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-shadow">
+              </div>
+              <div>
+                <label for="names-file" class="block text-sm font-semibold mb-2">Names spreadsheet <span class="text-text-subtle font-normal">(optional)</span></label>
+                <input type="file" id="names-file" name="names_file" accept=".csv,.xlsx,.xls"
+                  class="glow-input block w-full bg-card border border-border rounded-lg px-4 py-3 text-text-muted file:mr-4 file:rounded-md file:border-0 file:bg-accent file:px-4 file:py-2 file:text-sm file:font-semibold file:text-page hover:file:bg-accent-hover focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-shadow">
+              </div>
+            </div>
+            <div class="grid sm:grid-cols-2 gap-5 mt-5">
+              <div>
+                <label for="personalisation-needed" class="block text-sm font-semibold mb-2">Do the holders need individual names?</label>
+                <select id="personalisation-needed" name="individual_names" required
+                  class="glow-input w-full bg-card border border-border rounded-lg px-4 py-3 text-text-primary focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-shadow">
+                  <option value="">Select one</option>
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
+                  <option value="not_sure">Not sure yet</option>
+                </select>
+              </div>
+              <div>
+                <label for="name-format" class="block text-sm font-semibold mb-2">Name format <span class="text-text-subtle font-normal">(optional)</span></label>
+                <input type="text" id="name-format" name="name_format" placeholder="For example, first name and surname"
+                  class="glow-input w-full bg-card border border-border rounded-lg px-4 py-3 text-text-primary placeholder-text-subtle focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-shadow">
+              </div>
+            </div>
+          </section>
+
+          <section class="bg-card border border-border rounded-lg p-6 sm:p-8">
+            <div class="flex items-start gap-4 mb-6">
+              <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0">
+                <i class="fa-solid fa-truck text-accent"></i>
+              </div>
+              <div>
+                <h2 class="text-xl font-bold">Delivery and approval</h2>
+                <p class="text-text-muted text-sm mt-1">This helps avoid back-and-forth once the design is approved.</p>
+              </div>
+            </div>
+            <div>
+              <label for="delivery-address" class="block text-sm font-semibold mb-2">Delivery address <span class="text-text-subtle font-normal">(optional)</span></label>
+              <textarea id="delivery-address" name="delivery_address" rows="4" autocomplete="shipping street-address" placeholder="Name, address, postcode, and any delivery notes."
+                class="glow-input w-full bg-card border border-border rounded-lg px-4 py-3 text-text-primary placeholder-text-subtle focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-shadow resize-y"></textarea>
+            </div>
+            <div class="mt-5">
+              <label for="production-notes" class="block text-sm font-semibold mb-2">Anything else?</label>
+              <textarea id="production-notes" name="production_notes" rows="4" placeholder="Leave anything uncertain here and I will pick it up with you."
+                class="glow-input w-full bg-card border border-border rounded-lg px-4 py-3 text-text-primary placeholder-text-subtle focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-shadow resize-y"></textarea>
+            </div>
+            <label class="mt-5 flex items-start gap-3 text-sm text-text-muted leading-relaxed">
+              <input type="checkbox" name="proof_confirmation" value="confirmed" required class="mt-1 h-4 w-4 rounded border-border bg-card text-accent focus:ring-accent">
+              <span>I understand production will be based on the approved design proof and the spelling supplied in the final name file.</span>
+            </label>
+          </section>
+
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
+            <p class="text-text-muted text-sm leading-relaxed">
+              Not ready yet? Send what you have and leave anything uncertain in the notes.
+            </p>
+            <button type="submit" class="glow-btn bg-accent hover:bg-accent-hover text-page font-semibold px-8 py-3 rounded-lg">
+              Send Production Details
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-surface border-t border-border py-6">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 text-center text-text-subtle text-sm">
+      &copy; <span id="year"></span> Fusion Creations. All rights reserved.
+      <span class="mx-2">|</span>
+      <a href="/privacy.html" class="hover:text-accent transition-colors">Privacy &amp; cookies</a>
+    </div>
+  </footer>
+
+  <script src="../js/consent.js?v=20260529-1" defer></script>
+  <script src="../js/lead-form.js?v=20260530-1" defer></script>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Production Details Received | Fusion Creations</title>
+  <meta name="robots" content="noindex, nofollow">
+
+  <!-- Google tag (gtag.js) with Consent Mode v2 -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    window.fcConsentOptions = {
+      key: 'fc_cookie_consent',
+      maxAgeMs: 1000 * 60 * 60 * 24 * 180,
+      version: 2,
+      denied: {
+        ad_storage: 'denied',
+        analytics_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied'
+      },
+      granted: {
+        ad_storage: 'granted',
+        analytics_storage: 'granted',
+        ad_user_data: 'granted',
+        ad_personalization: 'granted'
+      }
+    };
+    window.fcReadCookieConsent = function () {
+      try {
+        const value = JSON.parse(localStorage.getItem(window.fcConsentOptions.key) || 'null');
+        if (!value || !value.status || !value.updatedAt) return null;
+        if (value.version !== window.fcConsentOptions.version) {
+          localStorage.removeItem(window.fcConsentOptions.key);
+          return null;
+        }
+        if (Date.now() - value.updatedAt > window.fcConsentOptions.maxAgeMs) {
+          localStorage.removeItem(window.fcConsentOptions.key);
+          return null;
+        }
+        return value.status;
+      } catch (error) {
+        return null;
+      }
+    };
+    window.fcHasMarketingConsent = function () {
+      return window.fcReadCookieConsent() === 'accepted';
+    };
+    gtag('consent', 'default', {
+      ad_storage: 'denied',
+      analytics_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      wait_for_update: 500
+    });
+    if (window.fcHasMarketingConsent()) {
+      gtag('consent', 'update', window.fcConsentOptions.granted);
+    }
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18013443650"></script>
+  <script>
+    gtag('js', new Date());
+    gtag('config', 'AW-18013443650');
+  </script>
+
+  <link rel="icon" href="../../img/favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../../css/tailwind.css?v=20260530-1">
+  <link rel="stylesheet" href="../../css/styles.css?v=20260530-1">
+</head>
+<body class="bg-page text-text-primary font-sans min-h-screen">
+  <main class="min-h-screen flex items-center justify-center px-4 py-16">
+    <div class="max-w-3xl mx-auto text-center">
+      <div class="mb-8">
+        <i class="fa-solid fa-circle-check text-accent text-6xl"></i>
+      </div>
+      <p class="text-accent font-semibold tracking-[0.2em] uppercase text-sm mb-4">Details Received</p>
+      <h1 class="text-3xl sm:text-5xl font-bold mb-5 tracking-tight">Thanks, I've got them.</h1>
+      <p class="text-text-muted text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
+        I will check the details against the design proof and come back to you if anything needs clearing up before production.
+      </p>
+
+      <div class="grid sm:grid-cols-3 gap-4 text-left mb-10">
+        <div class="bg-card border border-border rounded-lg p-5">
+          <i class="fa-solid fa-file-lines text-accent text-xl mb-4"></i>
+          <h2 class="font-semibold mb-2">1. Files checked</h2>
+          <p class="text-text-muted text-sm leading-relaxed">I will check logo files, colours, names, and any notes you added.</p>
+        </div>
+        <div class="bg-card border border-border rounded-lg p-5">
+          <i class="fa-solid fa-eye text-accent text-xl mb-4"></i>
+          <h2 class="font-semibold mb-2">2. Proof confirmed</h2>
+          <p class="text-text-muted text-sm leading-relaxed">If anything looks unclear, I will ask before making the production files.</p>
+        </div>
+        <div class="bg-card border border-border rounded-lg p-5">
+          <i class="fa-solid fa-cubes text-accent text-xl mb-4"></i>
+          <h2 class="font-semibold mb-2">3. Production planned</h2>
+          <p class="text-text-muted text-sm leading-relaxed">Once the proof is approved, I will prepare the print files and schedule the batch.</p>
+        </div>
+      </div>
+
+      <div class="flex flex-col sm:flex-row justify-center gap-4">
+        <a href="mailto:contact.fusioncreations@gmail.com?subject=Production%20details%20follow-up" class="inline-block bg-accent hover:bg-accent-hover text-page font-semibold px-8 py-3 rounded-lg transition-colors">
+          Email a Follow-up
+        </a>
+        <a href="/custom-id-card-holders/" class="inline-block border border-border text-text-muted hover:text-accent hover:border-accent/60 font-semibold px-8 py-3 rounded-lg transition-colors">
+          View ID Card Holders
+        </a>
+      </div>
+    </div>
+  </main>
+  <script src="../../js/consent.js?v=20260529-1" defer></script>
+</body>
+</html>
