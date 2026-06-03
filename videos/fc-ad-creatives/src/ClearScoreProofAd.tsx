@@ -336,7 +336,7 @@ const CloseUpScene: React.FC<{ format: Format; duration: number }> = ({
           }}
         >
           <Photo
-            src="assets/clearscore.jpg"
+            src="assets/clearscore-holder.png"
             alt="Close up of a personalised ClearScore badge holder"
             objectFit="contain"
           />

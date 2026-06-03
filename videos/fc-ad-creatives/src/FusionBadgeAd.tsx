@@ -189,19 +189,15 @@ const ProductImage: React.FC<{
   />
 );
 
-const ImageCard: React.FC<{
+const CutoutFrame: React.FC<{
   src: string;
   alt: string;
   style?: CSSProperties;
   objectPosition?: CSSProperties["objectPosition"];
   objectFit?: CSSProperties["objectFit"];
-}> = ({ src, alt, style, objectPosition, objectFit }) => (
+}> = ({ src, alt, style, objectPosition, objectFit = "contain" }) => (
   <div
     style={{
-      borderRadius: 34,
-      overflow: "hidden",
-      background: colours.paper,
-      boxShadow: "0 28px 90px rgba(16, 32, 43, 0.2)",
       ...style,
     }}
   >
@@ -210,6 +206,9 @@ const ImageCard: React.FC<{
       alt={alt}
       objectPosition={objectPosition}
       objectFit={objectFit}
+      style={{
+        filter: "drop-shadow(0 30px 45px rgba(16, 32, 43, 0.24))",
+      }}
     />
   </div>
 );
@@ -274,11 +273,11 @@ const OpeningScene: React.FC<{ format: Format; duration: number }> = ({
             3D printed holders with your logo, colours and attendee names.
           </p>
         </div>
-        <ImageCard
-          src="assets/hero-image.webp"
+        <CutoutFrame
+          src="assets/product-lineup.png"
           alt="A row of custom printed badge holders"
           style={{
-            height: isLandscape ? 780 : 760,
+            height: isLandscape ? 560 : 620,
             transform: `scale(${imageScale}) rotate(${isLandscape ? -2 : 0}deg)`,
           }}
           objectPosition="center"
@@ -312,11 +311,11 @@ const ProofScene: React.FC<{ format: Format; duration: number }> = ({
           alignItems: "center",
         }}
       >
-        <ImageCard
-          src="assets/clearscore.jpg"
+        <CutoutFrame
+          src="assets/clearscore-holder.png"
           alt="ClearScore badge holder with personalised name"
           style={{
-            height: isLandscape ? 800 : 930,
+            height: isLandscape ? 800 : 900,
             transform: `translateY(${lift}px) rotate(${isLandscape ? -3 : -1}deg)`,
           }}
           objectPosition="center"
@@ -398,6 +397,14 @@ const DetailsScene: React.FC<{ format: Format; duration: number }> = ({
           >
             Branded holders that feel part of the event
           </h2>
+          <CutoutFrame
+            src="assets/logo-holder.png"
+            alt="Custom badge holder with a white logo"
+            style={{
+              height: isLandscape ? 360 : 430,
+              transform: `rotate(${isLandscape ? -3 : -2}deg)`,
+            }}
+          />
         </div>
         <div
           style={{
@@ -536,11 +543,11 @@ const PriceScene: React.FC<{ format: Format; duration: number }> = ({
             next steps.
           </p>
         </div>
-        <ImageCard
-          src="assets/hero-image.webp"
+        <CutoutFrame
+          src="assets/product-lineup.png"
           alt="A row of custom printed badge holders"
           style={{
-            height: isLandscape ? 760 : 660,
+            height: isLandscape ? 520 : 460,
           }}
           objectPosition="center"
           objectFit="contain"
@@ -574,8 +581,8 @@ const CtaScene: React.FC<{ format: Format; duration: number }> = ({
           alignItems: "center",
         }}
       >
-        <ImageCard
-          src="assets/amex.jpg"
+        <CutoutFrame
+          src="assets/jane-doe-holder.png"
           alt="Close up of a printed badge holder"
           style={{
             height: isLandscape ? 720 : 760,
