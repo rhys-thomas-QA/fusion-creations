@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, follow">
+  <title>Fusion Creations Custom Badge Holder Spec Sheet</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 14mm;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      color: #111827;
+      background: #ffffff;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.38;
+    }
+
+    .sheet {
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    header {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 22px;
+      padding-bottom: 16px;
+      border-bottom: 3px solid #14b8a6;
+      margin-bottom: 18px;
+    }
+
+    .eyebrow {
+      margin: 0 0 7px;
+      color: #0f766e;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0 0 9px;
+      font-size: 30px;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+    }
+
+    h2 {
+      margin: 0 0 8px;
+      font-size: 16px;
+    }
+
+    h3 {
+      margin: 0 0 5px;
+      font-size: 13px;
+    }
+
+    p {
+      margin: 0;
+      font-size: 12px;
+      color: #374151;
+    }
+
+    .lead {
+      font-size: 14px;
+      color: #374151;
+    }
+
+    .contact {
+      padding: 14px;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      background: #f9fafb;
+    }
+
+    .contact p + p {
+      margin-top: 7px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .card {
+      padding: 13px;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      background: #ffffff;
+    }
+
+    .price {
+      margin: 2px 0 7px;
+      color: #111827;
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .section {
+      margin-bottom: 17px;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    ul, ol {
+      margin: 0;
+      padding-left: 18px;
+      color: #374151;
+      font-size: 12px;
+    }
+
+    li + li {
+      margin-top: 5px;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      counter-reset: step;
+    }
+
+    .step {
+      position: relative;
+      padding: 12px 11px 11px;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      background: #f9fafb;
+      min-height: 95px;
+    }
+
+    .step::before {
+      counter-increment: step;
+      content: counter(step);
+      display: inline-flex;
+      width: 22px;
+      height: 22px;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 8px;
+      border-radius: 6px;
+      background: #14b8a6;
+      color: #ffffff;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .note {
+      padding: 12px 14px;
+      border-left: 4px solid #14b8a6;
+      background: #ecfeff;
+      border-radius: 6px;
+    }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      padding-top: 12px;
+      border-top: 1px solid #d1d5db;
+      color: #6b7280;
+      font-size: 11px;
+    }
+  </style>
+</head>
+<body>
+  <main class="sheet">
+    <header>
+      <div>
+        <p class="eyebrow">Fusion Creations</p>
+        <h1>Custom badge holder spec sheet</h1>
+        <p class="lead">3D printed ID card and event badge holders for UK teams, conferences, staff days, onboarding, and partner events.</p>
+      </div>
+      <div class="contact">
+        <h2>Contact</h2>
+        <p><strong>Email:</strong> contact.fusioncreations@gmail.com</p>
+        <p><strong>Website:</strong> fusion-creations.com/custom-id-card-holders/</p>
+        <p><strong>Based in:</strong> United Kingdom</p>
+      </div>
+    </header>
+
+    <section class="grid" aria-label="Guide prices">
+      <div class="card">
+        <h2>Logo-only holders</h2>
+        <p class="price">from &pound;5.50</p>
+        <p>Best when every holder uses the same logo and shared design.</p>
+      </div>
+      <div class="card">
+        <h2>Personalised holders</h2>
+        <p class="price">from &pound;6</p>
+        <p>For individual names, roles, teams, departments, or partner companies.</p>
+      </div>
+      <div class="card">
+        <h2>Sample first</h2>
+        <p class="price">ask</p>
+        <p>A paid sample holder can help you check the finish before a full batch.</p>
+      </div>
+    </section>
+
+    <section class="section two-col">
+      <div>
+        <h2>What can be customised?</h2>
+        <ul>
+          <li>Holder body colour.</li>
+          <li>Logo and text colour.</li>
+          <li>Individual names, roles, departments, or attendee types.</li>
+          <li>Company, partner, or event details.</li>
+          <li>Lanyard hole, ring, or attachment position where practical.</li>
+        </ul>
+      </div>
+      <div>
+        <h2>What changes the quote?</h2>
+        <ul>
+          <li>Quantity and number of unique designs.</li>
+          <li>Logo detail and number of colours.</li>
+          <li>Deadline and delivery address.</li>
+          <li>Whether names come in a tidy spreadsheet.</li>
+          <li>Any design changes after sign-off.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>What to send for a useful first quote</h2>
+      <div class="two-col">
+        <ul>
+          <li>Approximate quantity.</li>
+          <li>Event date or deadline.</li>
+          <li>Logo file, ideally SVG, AI, EPS, or PDF.</li>
+          <li>Brand colours or reference images.</li>
+        </ul>
+        <ul>
+          <li>Whether each holder needs a name.</li>
+          <li>Example name, role, or department format.</li>
+          <li>Delivery postcode.</li>
+          <li>Whether you want a paid sample holder first.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Simple order process</h2>
+      <div class="steps">
+        <div class="step">
+          <h3>Send brief</h3>
+          <p>Quantity, logo, colours, deadline, and any personalisation.</p>
+        </div>
+        <div class="step">
+          <h3>Review preview</h3>
+          <p>Check the design direction, price, and next steps.</p>
+        </div>
+        <div class="step">
+          <h3>Approve details</h3>
+          <p>Confirm artwork, names, quantities, and delivery timing.</p>
+        </div>
+        <div class="step">
+          <h3>Production</h3>
+          <p>Holders are printed, checked, packed, and shipped.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section note">
+      <h2>Useful note for event organisers</h2>
+      <p>Most business and event orders start from around 50 units. Smaller sample or trial runs can be discussed when the design suits it.</p>
+    </section>
+
+    <footer>
+      <span>Fusion Creations custom badge holders</span>
+      <span>Updated June 2026</span>
+    </footer>
+  </main>
+</body>
+</html>
