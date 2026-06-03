@@ -25,7 +25,11 @@
     "render:vertical": "remotion render src/index.ts FusionBadgeAdVertical out/fusion-badge-ad-vertical.mp4",
     "render:square": "remotion render src/index.ts FusionBadgeAdSquare out/fusion-badge-ad-square.mp4",
     "render:landscape": "remotion render src/index.ts FusionBadgeAdLandscape out/fusion-badge-ad-landscape.mp4",
+    "render:proof:vertical": "remotion render src/index.ts ClearScoreProofAdVertical out/clearscore-proof-ad-vertical.mp4",
+    "render:proof:square": "remotion render src/index.ts ClearScoreProofAdSquare out/clearscore-proof-ad-square.mp4",
+    "render:proof:landscape": "remotion render src/index.ts ClearScoreProofAdLandscape out/clearscore-proof-ad-landscape.mp4",
     "still:vertical": "remotion still src/index.ts FusionBadgeAdVertical out/fusion-badge-ad-vertical-preview.png --frame=225 --scale=0.25",
+    "still:proof:vertical": "remotion still src/index.ts ClearScoreProofAdVertical out/clearscore-proof-ad-vertical-preview.png --frame=225 --scale=0.25",
     "upgrade": "remotion upgrade",
     "lint": "eslint src && tsc"
   },
