@@ -410,6 +410,34 @@ function testCriticalContentAndCtas() {
   }
 }
 
+function testPerformanceImageVariants() {
+  const displayHtml = htmlFiles.map((file) => read(file)).join('\n');
+  const imageChecks = [
+    ['public/img/hero-image-fallback.jpg', 250_000],
+    ['public/img/clearscore-proof.jpg', 180_000],
+    ['public/img/amex-proof.jpg', 120_000],
+  ];
+
+  for (const [relPath, maxBytes] of imageChecks) {
+    const filePath = path.join(rootDir, relPath);
+    if (!fs.existsSync(filePath)) {
+      fail(`${relPath}: missing optimised image variant`);
+      continue;
+    }
+
+    const { size } = fs.statSync(filePath);
+    if (size > maxBytes) fail(`${relPath}: expected under ${maxBytes} bytes, got ${size}`);
+  }
+
+  for (const expected of ['hero-image-fallback.jpg', 'clearscore-proof.jpg', 'amex-proof.jpg']) {
+    if (!displayHtml.includes(expected)) fail(`HTML should use ${expected} for display images`);
+  }
+
+  if (/<img\b[^>]+(?:hero-image\.jpg|ClearScore\.jpg|amex\.JPG)/i.test(displayHtml)) {
+    fail('HTML display images should use optimised image variants, not the original heavy files');
+  }
+}
+
 function testCopyGuardrails() {
   const filesToScan = [
     ...htmlFiles,
@@ -440,6 +468,7 @@ const tests = [
   ['Tracking and consent', testTrackingAndConsent],
   ['Lead forms', testForms],
   ['Critical content and CTAs', testCriticalContentAndCtas],
+  ['Performance image variants', testPerformanceImageVariants],
   ['Copy guardrails', testCopyGuardrails],
 ];
 
