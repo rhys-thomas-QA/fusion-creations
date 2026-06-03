@@ -320,6 +320,29 @@ function testTrackingAndConsent() {
   if (!thanks.includes("currency: 'GBP'") || !thanks.includes('value: 1')) {
     fail('public/thanks.html: conversion event should include GBP value');
   }
+
+  const custom = read(path.join(publicDir, 'custom-id-card-holders', 'index.html'));
+  const pageInsights = read(path.join(publicDir, 'js', 'page-insights.js'));
+  if (!custom.includes('js/page-insights.js')) {
+    fail('public/custom-id-card-holders/index.html: missing page insight tracking script');
+  }
+  for (const marker of [
+    'data-track-view="pricing"',
+    'data-track-view="proof"',
+    'data-track-view="quote_form"',
+    'data-track-cta="quote"',
+  ]) {
+    if (!custom.includes(marker)) fail(`public/custom-id-card-holders/index.html: missing ${marker}`);
+  }
+  for (const eventName of [
+    'fc_quote_cta_clicked',
+    'fc_quote_form_started',
+    'fc_pricing_viewed',
+    'fc_proof_viewed',
+    'fc_quote_form_viewed',
+  ]) {
+    if (!pageInsights.includes(eventName)) fail(`public/js/page-insights.js: missing ${eventName}`);
+  }
 }
 
 function testForms() {
