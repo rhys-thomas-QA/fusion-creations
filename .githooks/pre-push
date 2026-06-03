@@ -1,0 +1,15 @@
+#!/bin/sh
+set -eu
+
+echo "Running pre-push checks..."
+npm run build:css
+npm test
+git diff --check
+
+if ! git diff --quiet -- public/css/tailwind.css; then
+  echo "public/css/tailwind.css changed after npm run build:css."
+  echo "Commit the rebuilt CSS before pushing."
+  exit 1
+fi
+
+echo "Pre-push checks passed."

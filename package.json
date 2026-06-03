@@ -1,6 +1,9 @@
 {
   "scripts": {
-    "build:css": "npx tailwindcss@3.4.17 -i ./tailwind.input.css -o ./public/css/tailwind.css --minify"
+    "build:css": "npx tailwindcss@3.4.17 -i ./tailwind.input.css -o ./public/css/tailwind.css --minify",
+    "test": "node scripts/test-site.mjs",
+    "verify": "npm run build:css && npm test",
+    "setup:hooks": "git config core.hooksPath .githooks"
   },
   "devDependencies": {
     "tailwindcss": "3.4.17"
