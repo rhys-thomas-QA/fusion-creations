@@ -1,0 +1,35 @@
+{
+  "name": "fc-ad-creatives",
+  "version": "1.0.0",
+  "description": "Fusion Creations marketing video templates",
+  "repository": {},
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@remotion/cli": "4.0.471",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "remotion": "4.0.471"
+  },
+  "devDependencies": {
+    "@remotion/eslint-config-flat": "4.0.471",
+    "@types/react": "19.2.7",
+    "@types/web": "0.0.166",
+    "eslint": "9.19.0",
+    "prettier": "3.8.1",
+    "typescript": "5.9.3"
+  },
+  "scripts": {
+    "dev": "remotion studio",
+    "build": "remotion bundle",
+    "render:vertical": "remotion render src/index.ts FusionBadgeAdVertical out/fusion-badge-ad-vertical.mp4",
+    "render:square": "remotion render src/index.ts FusionBadgeAdSquare out/fusion-badge-ad-square.mp4",
+    "render:landscape": "remotion render src/index.ts FusionBadgeAdLandscape out/fusion-badge-ad-landscape.mp4",
+    "still:vertical": "remotion still src/index.ts FusionBadgeAdVertical out/fusion-badge-ad-vertical-preview.png --frame=225 --scale=0.25",
+    "upgrade": "remotion upgrade",
+    "lint": "eslint src && tsc"
+  },
+  "sideEffects": [
+    "*.css"
+  ]
+}
