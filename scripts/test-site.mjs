@@ -391,6 +391,10 @@ function testCriticalContentAndCtas() {
 
   const checks = [
     [custom, 'custom ID card holders page', 'Ask about a paid sample holder'],
+    [custom, 'custom ID card holders page', 'Get a free badge holder mock-up'],
+    [custom, 'custom ID card holders page', 'What happens after you enquire'],
+    [custom, 'custom ID card holders page', 'Get My Free Mock-up'],
+    [custom, 'custom ID card holders page', 'data-track-location="quote_form_submit"'],
     [custom, 'custom ID card holders page', '/downloads/custom-badge-holder-spec-sheet.pdf'],
     [custom, 'custom ID card holders page', '/blog/event-badge-holder-checklist'],
     [custom, 'custom ID card holders page', 'Logo-only holders'],
